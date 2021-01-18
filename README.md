@@ -24,6 +24,8 @@ It mainly consists of a web application, the main page will contain all the proj
 * SASS
 * Bootstrap 4
 
+# Usage
+
 ## Angular CLI
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
 
