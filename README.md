@@ -1,35 +1,27 @@
-# University Projects Manager: Frontend Repository
-This project was thought in order to facility the creation, management and formalization of university research projects. Both students and teachers will be able to organize their project, which will be visible to other students who may want to join the research team.
-It mainly consists of a web application, the main page will contain all the projects in order to make them known for everyone, and they will be accepting requests for those who want to get in. 
+# UpmFrontend
 
-#### Our main purpose is to facilitate and promote scientific dissemination.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
 
-# Under Development...
-Currently: `Research State`
+## Development server
 
-Development Starting Date: `May-June 2020`
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-> The next "Tech Stack" is not complete...
+## Code scaffolding
 
-# Tech Stack
-### Common
-* JavaScript / TypeScript
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### Backend
-* Node.JS
-* Express
-* TypeORM
-* PostgreSQL
+## Build
 
-### Frontend
-* Angular 8
-* HTML5/CSS3
-* SASS
-* Bootstrap 4
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-# Authors
-Alejandro Recalde - :octocat: https://github.com/alereca
+## Running unit tests
 
-Joshua Acciarri - :octocat: https://github.com/JAcciarri
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Nicolás Antonelli - :octocat: https://github.com/NicoAntonelli
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
