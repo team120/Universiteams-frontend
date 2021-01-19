@@ -1,22 +1,28 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './model/user';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { User } from "./model/auth/user";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class UsersService {
-  private readonly baseUrl = "http://localhost:3000"
+  private readonly baseUrl = "http://localhost:3000";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  getUsers(){
-    const url = `${this.baseUrl}/users`
-    return this.httpClient.get<User[]>(url)
+  getUsers(token: string): Observable<User[]> {
+    const url = `${this.baseUrl}/users`;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.httpClient.get<User[]>(url, httpOptions);
   }
 
-  getUser(id: Number){
-    const url = `${this.baseUrl}/users/${id}`
-    return this.httpClient.get<User>(url)
+  getUser(id: Number): Observable<User> {
+    const url = `${this.baseUrl}/users/${id}`;
+    return this.httpClient.get<User>(url);
   }
 }
