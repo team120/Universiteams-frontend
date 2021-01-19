@@ -15,7 +15,7 @@ export class UsersService {
     const url = `${this.baseUrl}/users`;
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`,
+        Authorization: token,
       }),
     };
     return this.httpClient.get<User[]>(url, httpOptions);
