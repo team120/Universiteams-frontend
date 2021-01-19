@@ -8,7 +8,7 @@ import { LoggedUserDto } from "./model/auth/output/login.output.dto";
   providedIn: "root",
 })
 export class AuthService {
-  private readonly baseUrl = "http://localhost:3000";
+  private readonly baseUrl = "http://localhost:3000/auth";
 
   constructor(private httpClient: HttpClient) {}
 

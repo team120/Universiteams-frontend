@@ -3,7 +3,6 @@ import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import { LocalStorageService } from "../local-storage.service";
 import { LoginInputDto } from "../model/auth/input/login.input.dto";
-import { LoggedUserDto } from "../model/auth/output/login.output.dto";
 
 @Component({
   selector: "app-login",

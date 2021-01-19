@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
     if (token == null) {
       throw Error("No Token");
     }
+    console.log(token);
     this.usersService.getUsers(token!).subscribe((response: User[]) => {
       this.users = response;
     });
