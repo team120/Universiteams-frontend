@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { AuthService } from "../auth.service";
 import { LocalStorageService } from "../local-storage.service";
 import { LoginInputDto } from "../model/auth/input/login.input.dto";
@@ -12,7 +13,8 @@ import { LoggedUserDto } from "../model/auth/output/login.output.dto";
 export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private storageService: LocalStorageService
+    private storageService: LocalStorageService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
   login(loginData: LoginInputDto) {
     this.authService.login(loginData).subscribe((loggedUsr) => {
       this.storageService.updateTokenInStorage(loggedUsr);
+      this.router.navigate(["users"]);
     });
   }
 }

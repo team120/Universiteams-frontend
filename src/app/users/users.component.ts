@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     const token = this.storageService.getTokenInStorage();
     if (token == null) {
-      console.log("No Tokenn");
+      throw Error("No Token");
     }
     this.usersService.getUsers(token!).subscribe((response: User[]) => {
       this.users = response;
