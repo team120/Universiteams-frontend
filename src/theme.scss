@@ -1,0 +1,21 @@
+@import '~@angular/material/theming';
+
+// UPM - Custom typographies
+$upm-general-typography: mat-typography-config($font-family: 'Roboto, sans-serif');
+$upm-alternative-typography: mat-typography-config(
+  $font-family: '"Open Sans", "Helvetica Neue", sans-serif',
+  $body-2:      mat-typography-level(14px, 24px, 600)
+);
+
+// UPM - Custom colors palette
+$upm-app-primary: mat-palette($mat-blue);
+$upm-app-accent:  mat-palette($mat-purple, A200, A100, A400);
+$upm-app-warn:    mat-palette($mat-red);
+
+// Theme Object
+$upm-app-theme: mat-dark-theme((
+  color: (primary: $upm-app-primary, accent: $upm-app-accent, warn: $upm-app-warn),
+));
+  
+@include mat-core($upm-general-typography);
+@include angular-material-theme($upm-app-theme);
