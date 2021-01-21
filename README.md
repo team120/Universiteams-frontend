@@ -10,19 +10,25 @@ It mainly consists of a web application, the main page will contain all the proj
 
 # Tech Stack
 ### Common
-* JavaScript / TypeScript
+|Tool|
+|:-|
+|:ballot_box_with_check: JavaScript / TypeScript|
 
 ### Backend
-* Node.JS
-* Express
-* TypeORM
-* PostgreSQL
+|Tool|
+|:-|
+|:ballot_box_with_check: Node.JS|
+|:ballot_box_with_check: Express|
+|:ballot_box_with_check: TypeORM|
+|:ballot_box_with_check: PostgreSQL|
 
 ### Frontend
-* Angular 8
-* HTML5/CSS3
-* SASS
-* Bootstrap 4
+|Tool|
+|:-|
+|:ballot_box_with_check: Angular 11|
+|:ballot_box_with_check: Angular Material|
+|:ballot_box_with_check: Angular Flex Layout|
+|:ballot_box_with_check: HTML5 / CSS3 / SASS|
 
 # Usage
 
@@ -48,8 +54,8 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # Authors
-Alejandro Recalde - :octocat: https://github.com/alereca
-
-Joshua Acciarri - :octocat: https://github.com/JAcciarri
-
-Nicolás Antonelli - :octocat: https://github.com/NicoAntonelli
+|Name|GitHub Account|
+|:-|:-|
+|Recalde, Alejandro|:octocat: https://github.com/alereca|
+|Antonelli, Nicolás|:octocat: https://github.com/NicoAntonelli|
+|Acciarri, Joshua|:octocat: https://github.com/JAcciarri|
