@@ -1,16 +1,47 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { MainComponent } from "./main/main.component";
-import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
-import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
-  { path: "", component: MainComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "users", component: UsersComponent },
-  { path: ":", redirectTo: "/login", pathMatch: "full" },
+  {
+    path: "users",
+    loadChildren: () =>
+      import("./users/users.module").then((m) => m.UsersModule),
+  },
+  {
+    path: "login",
+    loadChildren: () =>
+      import("./login/login.module").then((m) => m.LoginModule),
+    data: {
+      showNavbar: false,
+      showHeader: false,
+    },
+  },
+  {
+    path: "register",
+    loadChildren: () =>
+      import("./register/register.module").then((m) => m.RegisterModule),
+    data: {
+      showNavbar: false,
+      showHeader: false,
+    },
+  },
+  {
+    path: "dashboard",
+    loadChildren: () =>
+      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+  },
+  {
+    path: "account-settings",
+    loadChildren: () =>
+      import("./account-settings/account-settings.module").then(
+        (m) => m.AccountSettingsModule
+      ),
+  },
+  {
+    path: "",
+    redirectTo: "/login",
+    pathMatch: "full",
+  },
 ];
 
 @NgModule({
