@@ -1,16 +1,19 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { LoginComponent } from "./login/login.component";
+import { RegisterComponent } from "./register/register.component";
+import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
   {
     path: "users",
-    loadChildren: () =>
-      import("./users/users.module").then((m) => m.UsersModule),
+    component: UsersComponent,
   },
   {
     path: "login",
-    loadChildren: () =>
-      import("./login/login.module").then((m) => m.LoginModule),
+    component: LoginComponent,
     data: {
       showNavbar: false,
       showHeader: false,
@@ -18,8 +21,7 @@ const routes: Routes = [
   },
   {
     path: "register",
-    loadChildren: () =>
-      import("./register/register.module").then((m) => m.RegisterModule),
+    component: RegisterComponent,
     data: {
       showNavbar: false,
       showHeader: false,
@@ -27,15 +29,11 @@ const routes: Routes = [
   },
   {
     path: "dashboard",
-    loadChildren: () =>
-      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+    component: DashboardComponent,
   },
   {
     path: "account-settings",
-    loadChildren: () =>
-      import("./account-settings/account-settings.module").then(
-        (m) => m.AccountSettingsModule
-      ),
+    component: AccountSettingsComponent,
   },
   {
     path: "",
