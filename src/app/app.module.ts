@@ -14,10 +14,15 @@ import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDividerModule } from "@angular/material/divider";
-import { MatListModule } from "@angular/material/list";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
-import { LayoutModule } from "./layout/layout.module";
+import { FooterComponent } from "./layout/footer/footer.component";
+import { HeaderComponent } from "./layout/header/header.component";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
+import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
+import { MatListModule } from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -27,6 +32,9 @@ import { LayoutModule } from "./layout/layout.module";
     RegisterComponent,
     DashboardComponent,
     AccountSettingsComponent,
+    FooterComponent,
+    HeaderComponent,
+    SidenavBodyComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,8 +47,10 @@ import { LayoutModule } from "./layout/layout.module";
     MatCardModule,
     MatToolbarModule,
     MatDividerModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
     MatListModule,
-    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
