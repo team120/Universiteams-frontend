@@ -18,6 +18,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatListModule } from "@angular/material/list";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { LayoutModule } from "./layout/layout.module";
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AccountSettingsComponent } from "./account-settings/account-settings.co
     MatToolbarModule,
     MatDividerModule,
     MatListModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],
