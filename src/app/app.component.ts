@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatSidenav } from "@angular/material/sidenav";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 
 @Component({
@@ -7,7 +8,7 @@ import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-  title = "upm-frontend";
+  @ViewChild(MatSidenav) sidebar: MatSidenav | undefined;
   showHeader = false;
   showSidebar = false;
   showFooter = false;
@@ -17,13 +18,16 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showHeader =
-          this.activatedRoute.firstChild?.snapshot.data.showHeader !== false;
-        this.showSidebar =
-          this.activatedRoute.firstChild?.snapshot.data.showNavbar !== false;
-        this.showFooter =
-          this.activatedRoute.firstChild?.snapshot.data.showFooter !== false;
+        this.showHeader = this.activatedRoute.firstChild?.snapshot.data.showHeader !== false;
+        this.showSidebar = this.activatedRoute.firstChild?.snapshot.data.showNavbar !== false;
+        this.showFooter = this.activatedRoute.firstChild?.snapshot.data.showFooter !== false;
       }
     });
+  }
+
+  onToggleSidebar() {
+    if (this.sidebar !== undefined) {
+      this.sidebar.toggle();
+    }
   }
 }

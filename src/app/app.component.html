@@ -1,14 +1,9 @@
-<app-header *ngIf="showHeader" fxLayout="column"></app-header>
-
-<div fxLayout="row">
-  <app-sidebar
-    *ngIf="showSidebar"
-    fxLayout="column"
-    fxFlex="300px"
-  ></app-sidebar>
-  <div class="content" fxLayout="column" fxFlex>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" *ngIf="showSidebar">Sidenav Content</mat-sidenav>
+  <mat-sidenav-content>
+    <app-header *ngIf="showHeader" fxLayout="column" (toggleSidebar)="onToggleSidebar()" ></app-header>
     <router-outlet></router-outlet>
-  </div>
-</div>
+    <app-footer *ngIf="showFooter" fxLayout="column"></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-<app-footer *ngIf="showFooter" fxLayout="column"></app-footer>

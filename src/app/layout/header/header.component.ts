@@ -1,3 +1,5 @@
+import { EventEmitter } from '@angular/core';
+import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +7,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  @Output() toggleSidebar = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  onClickToggleSidebarButton(){
+    this.toggleSidebar.emit()
   }
-
 }

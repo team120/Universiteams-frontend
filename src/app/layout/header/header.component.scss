@@ -1,4 +1,7 @@
-:host {
-  background: #5786e1;
-  padding: 30px;
+#toggleNavBtn {
+    margin-right: 7px;
+}
+
+.mat-icon-button ::ng-deep .mat-button-focus-overlay {
+    display: none;
 }
