@@ -15,8 +15,8 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent,
     data: {
-      showNavbar: false,
-      showHeader: false,
+      showNavbar: true,
+      showHeader: true,
     },
   },
   {

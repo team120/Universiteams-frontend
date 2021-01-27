@@ -2,15 +2,14 @@
   <mat-sidenav
     [mode]="isMobile ? 'over' : 'side'"
     [fixedInViewport]="isMobile"
-    *ngIf="showSidenav"
-  >
+    *ngIf="showSidenav">
     <app-sidenav-body></app-sidenav-body>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="filled">
     <div id="content" fxLayout="column">
       <app-header *ngIf="showHeader" (toggleSidebar)="onToggleSidebar()"></app-header>
-      <router-outlet fxFlex="37em"></router-outlet>
-      <app-footer *ngIf="showFooter"></app-footer>
+      <router-outlet class="outlet"></router-outlet>
+      <app-footer fxFlexOffset="auto" *ngIf="showFooter"></app-footer>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
