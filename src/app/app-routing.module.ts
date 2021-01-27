@@ -32,7 +32,6 @@ const routes: Routes = [
   {
     path: "dashboard",
     component: DashboardComponent,
-    canActivate: [AuthGuardService]
   },
   {
     path: "account-settings",
@@ -41,7 +40,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "/login",
+    redirectTo: "/dashboard",
     pathMatch: "full",
   },
 ];

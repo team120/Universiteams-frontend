@@ -23,6 +23,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { MatListModule } from "@angular/material/list";
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -51,8 +53,16 @@ import { MatListModule } from "@angular/material/list";
     MatSidenavModule,
     MatButtonModule,
     MatListModule,
+    MatDialogModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {},
+    },
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

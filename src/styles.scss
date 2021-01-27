@@ -1,16 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* mat-button-colors */
 
 .mat-upm-success {
-    color: #f0fff3;
-    background-color: #155724;
+  color: #f0fff3;
+  background-color: #155724;
 }
 
 .mat-upm-secondary {
-    color: #f0fff3;
-    background-color: #777777;
+  color: #f0fff3;
+  background-color: #777777;
+}
+
+.no-padding-dialog .mat-dialog-container {
+  padding: 0px !important;
 }
