@@ -4,7 +4,6 @@ import { AccountSettingsComponent } from "./account-settings/account-settings.co
 import { AuthGuardService } from "./auth-guard.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
 import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
@@ -17,16 +16,8 @@ const routes: Routes = [
     path: "login",
     component: LoginComponent,
     data: {
-      showNavbar: true,
-      showHeader: true,
-    },
-  },
-  {
-    path: "register",
-    component: RegisterComponent,
-    data: {
-      showNavbar: false,
-      showHeader: false,
+      showNavbar: true, // false
+      showHeader: true, // false
     },
   },
   {
