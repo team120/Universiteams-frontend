@@ -8,7 +8,7 @@
     </p>
   </mat-card-content>
 
-  <mat-tab-group>
+  <mat-tab-group class="lit_pad_b" mat-stretch-tabs>
     <mat-tab label="Login">
       <form
         [formGroup]="loginForm"
@@ -55,16 +55,13 @@
       </form>
     </mat-tab>
   </mat-tab-group>
+  
+  <mat-divider></mat-divider>
 
   <div fxLayout="column" fxLayoutAlign="stretch">
     <br />
-    <br />
     <button mat-raised-button class="google-style">
       Conectarse con Google
-    </button>
-    <br />
-    <button mat-raised-button class="facebook-style">
-      Conectarse con Facebook
     </button>
     <br />
     <button mat-raised-button color="primary">
