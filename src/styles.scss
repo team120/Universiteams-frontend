@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+/*************************** General **************************/
+
 html, body {
   height: 100%;
 }
@@ -9,7 +11,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* mat-button Colors */
+/********************** mat-button Colors *********************/
 
 .mat-upm-success {
   color: #f0fff3;
@@ -23,4 +25,18 @@ body {
 
 .no-padding-dialog .mat-dialog-container {
   padding: 0px !important;
+}
+
+/*********************** oAuth Buttons ************************/
+
+.google-style {
+  color: #555555;
+  background-color: whitesmoke;
+  // edit this with icon and everything
+}
+
+.facebook-style {
+  color: white;
+  background-color: #3B5988;
+  // edit this with icon and everything
 }
