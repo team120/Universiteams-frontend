@@ -11,11 +11,18 @@ import { LoginInputDto } from "../model/auth/input/login.input.dto";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
 })
+
 export class LoginComponent {
   loginForm = new FormGroup({
     mail: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", [Validators.required]),
   });
+
+  registerForm = new FormGroup({
+    mail: new FormControl("", [Validators.required, Validators.email]),
+    password: new FormControl("", [Validators.required]),
+  });
+
   redirectRoute = "";
 
   constructor(
@@ -28,23 +35,40 @@ export class LoginComponent {
     this.redirectRoute = data.redirectRoute;
   }
 
-  get mail() {
+  get loginMail() {
     return this.loginForm.get("mail");
   }
 
-  get password() {
+  get loginPassword() {
     return this.loginForm.get("password");
   }
 
-  onSubmit() {
+  get registerMail() {
+    return this.registerForm.get("mail");
+  }
+
+  get registerPassword() {
+    return this.registerForm.get("password");
+  }
+
+  onLoginSubmit() {
     const loginData: LoginInputDto = {
-      mail: this.mail?.value,
-      password: this.password?.value,
+      mail: this.loginMail?.value,
+      password: this.loginPassword?.value,
     };
     this.authService.login(loginData).subscribe((loggedUsr) => {
       this.storageService.updateTokenInStorage(loggedUsr);
       this.dialogRef.close();
       this.router.navigate([this.redirectRoute]);
     });
+  }
+
+  onRegisterSubmit() {
+    const loginData: LoginInputDto = {
+      mail: this.registerMail?.value,
+      password: this.registerPassword?.value,
+    };
+      // verify if already exists
+      this.router.navigate([this.redirectRoute]);
   }
 }

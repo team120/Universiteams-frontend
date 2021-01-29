@@ -24,6 +24,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { MatListModule } from "@angular/material/list";
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { MatTabsModule } from '@angular/material/tabs';
 import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     FooterComponent,
     HeaderComponent,
     SidenavBodyComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatButtonModule,
     MatListModule,
     MatDialogModule,
+    MatTabsModule,
     ReactiveFormsModule,
   ],
   providers: [
@@ -65,4 +68,4 @@ import { ReactiveFormsModule } from "@angular/forms";
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
