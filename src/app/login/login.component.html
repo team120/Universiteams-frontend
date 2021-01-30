@@ -22,7 +22,7 @@
           <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Password</mat-label>
+          <mat-label>Contraseña</mat-label>
           <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
@@ -33,7 +33,7 @@
       </form>
     </mat-tab>
 
-    <mat-tab label="Register">
+    <mat-tab label="Registrarse">
       <form
         [formGroup]="registerForm"
         fxLayout="column"
@@ -47,7 +47,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Password</mat-label>
+          <mat-label>Contraseña</mat-label>
           <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
@@ -64,12 +64,13 @@
   <div fxLayout="column" fxLayoutAlign="stretch">
     <br/>
     <button mat-raised-button class="google-style butt-pd">
-      <mat-icon svgIcon="logo" class="google-logo"></mat-icon>
+      <mat-icon svgIcon="logo" class="butt-icon"></mat-icon>
       Conectarse con Google
     </button>
 
     <br/>
     <button mat-raised-button color="primary" class="butt-pd">
+      <mat-icon class="butt-icon">nature_people</mat-icon>
       Solo vengo de visita
     </button>
   </div>
