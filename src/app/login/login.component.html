@@ -8,7 +8,7 @@
     </p>
   </mat-card-content>
 
-  <mat-tab-group class="lit_pad_b" mat-stretch-tabs>
+  <mat-tab-group class="lit-pad-b" animationDuration="0ms" mat-stretch-tabs>
     <mat-tab label="Login">
       <form
         [formGroup]="loginForm"
@@ -16,17 +16,18 @@
         fxLayoutAlign="stretch"
         (ngSubmit)="onLoginSubmit()">
         
-        <mat-form-field class="lit_pad_t">
+        <mat-form-field class="lit-pad-t">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" formControlName="mail" />
+          <input matInput placeholder="Email" formControlName="mail"/>
+          <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
-
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput type="password" placeholder="Contraseña" formControlName="password" />
+          <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
+          <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
 
-        <button mat-raised-button type="submit" color="primary" [disabled]="!loginForm.valid">
+        <button mat-raised-button type="submit" color="primary" class="butt-pd" [disabled]="!loginForm.valid">
           Iniciar Sesión
         </button>
       </form>
@@ -39,17 +40,19 @@
         fxLayoutAlign="stretch"
         (ngSubmit)="onRegisterSubmit()">
         
-        <mat-form-field class="lit_pad_t">
+        <mat-form-field class="lit-pad-t">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" formControlName="mail" />
+          <input matInput placeholder="Email" formControlName="mail"/>
+          <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput type="password" placeholder="Contraseña" formControlName="password" />
+          <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
+          <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
 
-        <button mat-raised-button type="submit" color="primary" [disabled]="!registerForm.valid">
+        <button mat-raised-button type="submit" color="primary" class="butt-pd" [disabled]="!registerForm.valid">
           Registrarse
         </button>
       </form>
@@ -59,12 +62,14 @@
   <mat-divider></mat-divider>
 
   <div fxLayout="column" fxLayoutAlign="stretch">
-    <br />
-    <button mat-raised-button class="google-style">
+    <br/>
+    <button mat-raised-button class="google-style butt-pd">
+      <mat-icon svgIcon="logo" class="google-logo"></mat-icon>
       Conectarse con Google
     </button>
-    <br />
-    <button mat-raised-button color="primary">
+
+    <br/>
+    <button mat-raised-button color="primary" class="butt-pd">
       Solo vengo de visita
     </button>
   </div>

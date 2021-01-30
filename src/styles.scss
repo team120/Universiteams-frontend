@@ -15,6 +15,17 @@ body {
   padding: 0px !important;
 }
 
+/************************** Buttons ***************************/
+
+.butt-pd {
+  padding: 0.2rem;
+}
+
+.google-style {
+  color: #555555;
+  background-color: whitesmoke;
+}
+
 /********************** mat-button Colors *********************/
 
 .mat-upm-success {
@@ -25,12 +36,4 @@ body {
 .mat-upm-secondary {
   color: #f0fff3;
   background-color: #777777;
-}
-
-/*********************** oAuth Buttons ************************/
-
-.google-style {
-  color: #555555;
-  background-color: whitesmoke;
-  // edit this with icon and everything
 }

@@ -2,9 +2,15 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
+
 import { AuthService } from "../auth.service";
 import { LocalStorageService } from "../local-storage.service";
 import { LoginInputDto } from "../model/auth/input/login.input.dto";
+
+const googleLogoURL = 
+"https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg";
 
 @Component({
   selector: "app-login",
@@ -30,9 +36,15 @@ export class LoginComponent {
     private authService: AuthService,
     private storageService: LocalStorageService,
     private dialogRef: MatDialogRef<LoginComponent>,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
+
     this.redirectRoute = data.redirectRoute;
+    this.matIconRegistry.addSvgIcon(
+      "logo",
+      this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL));
   }
 
   get loginMail() {

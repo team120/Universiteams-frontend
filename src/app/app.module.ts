@@ -1,30 +1,31 @@
-import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { UsersComponent } from "./users/users.component";
 import { LoginComponent } from "./login/login.component";
-import { HttpClientModule } from "@angular/common/http";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { FooterComponent } from "./layout/footer/footer.component";
+import { HeaderComponent } from "./layout/header/header.component";
+import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
+import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDividerModule } from "@angular/material/divider";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { AccountSettingsComponent } from "./account-settings/account-settings.component";
-import { FooterComponent } from "./layout/footer/footer.component";
-import { HeaderComponent } from "./layout/header/header.component";
 import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
-import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { MatListModule } from "@angular/material/list";
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatTabsModule } from '@angular/material/tabs';
-import { ReactiveFormsModule } from "@angular/forms";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,6 @@ import { ReactiveFormsModule } from "@angular/forms";
     FooterComponent,
     HeaderComponent,
     SidenavBodyComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -49,13 +49,13 @@ import { ReactiveFormsModule } from "@angular/forms";
     MatCardModule,
     MatToolbarModule,
     MatDividerModule,
-    MatIconModule,
     MatSidenavModule,
     MatButtonModule,
     MatListModule,
     MatDialogModule,
     MatTabsModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   providers: [
     {
