@@ -26,14 +26,34 @@ body {
   background-color: whitesmoke;
 }
 
-/********************** mat-button Colors *********************/
+/*************************** Colors ***************************/
 
 .mat-upm-success {
   color: #f0fff3;
   background-color: #155724;
 }
 
+.mat-upm-primary {
+  color: #f0fff3;
+  background-color:#4285f4;
+}
+
 .mat-upm-secondary {
   color: #f0fff3;
   background-color: #777777;
+}
+
+.mat-upm-shade-1 {
+  color: #f0fff3;
+  background-color: #555555;
+}
+
+.mat-upm-shade-2 {
+  color: #f0fff3;
+  background-color: #373737;
+}
+
+.mat-upm-shade-3 {
+  color: #f0fff3;
+  background-color: #222222;
 }

@@ -1,7 +1,11 @@
 #toggleNavBtn {
-    margin-right: 7px;
+    margin-right: 0.5rem;
 }
 
 .mat-icon-button ::ng-deep .mat-button-focus-overlay {
     display: none;
+}
+
+.header-spacer {
+    flex: 1 1 auto;
 }
