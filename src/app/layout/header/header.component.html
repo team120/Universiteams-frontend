@@ -5,25 +5,30 @@
         </button>
         <span>UPM</span>
         <span class="header-spacer"></span>
-        <button id="settingsBtn" mat-icon-button aria-label="Open user's settings">
+        <button id="settingsBtn" mat-icon-button aria-label="Open user's settings" routerLink="/account-settings" routerLinkActive="active">
             <mat-icon>settings</mat-icon>
         </button>
     </mat-toolbar-row>
 
     <mat-toolbar-row class="mat-upm-shade-2" fxLayoutAlign="space-between center">
-        <button id="myProjectsBtn" mat-icon-button aria-label="My Projects">
+        <button id="myProjectsBtn" mat-icon-button aria-label="My Projects"
+        routerLink="/my-projects" routerLinkActive="active">
             <mat-icon>folder_shared</mat-icon>
         </button>
-        <button id="newProjectBtn" mat-icon-button aria-label="Create New Project">
+        <button id="newProjectBtn" mat-icon-button aria-label="Create New Project" routerLink="/new-project"
+        routerLinkActive="active">
             <mat-icon>create_new_folder</mat-icon>
         </button>
-        <button id="myRequestsBtn" mat-icon-button aria-label="My Requests">
+        <button id="myRequestsBtn" mat-icon-button aria-label="My Requests" routerLink="/my-requests"
+        routerLinkActive="active">
             <mat-icon>library_books</mat-icon>
         </button>
-        <button id="remindersBtn" mat-icon-button aria-label="Reminders">
+        <button id="remindersBtn" mat-icon-button aria-label="Reminders" routerLink="/my-reminders"
+        routerLinkActive="active">
             <mat-icon>calendar_today</mat-icon>
         </button>
-        <button id="searchProjectsBtn" mat-icon-button aria-label="Search Projects">
+        <button id="searchProjectsBtn" mat-icon-button aria-label="Search Projects" routerLink="/search"
+        routerLinkActive="active">
             <mat-icon>search</mat-icon>
         </button>
     </mat-toolbar-row>
