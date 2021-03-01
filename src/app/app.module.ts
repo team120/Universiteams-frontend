@@ -26,6 +26,8 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from "@angular/material/icon";
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { MatIconModule } from "@angular/material/icon";
     MatTabsModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     {

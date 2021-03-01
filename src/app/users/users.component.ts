@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatTableDataSource } from "@angular/material/table";
 import { LocalStorageService } from "../local-storage.service";
 import { User } from "../model/auth/user";
 import { UsersService } from "../users.service";
@@ -9,7 +11,10 @@ import { UsersService } from "../users.service";
   styleUrls: ["./users.component.scss"],
 })
 export class UsersComponent implements OnInit {
-  users: User[] = [];
+  users = new MatTableDataSource<User>();
+  columnsToDisplay = ["name", "lastName", "mail", "requestActions"]
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private usersService: UsersService,
@@ -23,7 +28,7 @@ export class UsersComponent implements OnInit {
     }
     console.log(token);
     this.usersService.getUsers(token!).subscribe((response: User[]) => {
-      this.users = response;
+      this.users.data = response;
     });
   }
 }
