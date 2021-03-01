@@ -10,7 +10,7 @@ import { UsersService } from "../users.service";
   templateUrl: "./users.component.html",
   styleUrls: ["./users.component.scss"],
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, AfterViewInit {
   users = new MatTableDataSource<User>();
   columnsToDisplay = ["name", "lastName", "mail", "requestActions"]
 
@@ -30,5 +30,9 @@ export class UsersComponent implements OnInit {
     this.usersService.getUsers(token!).subscribe((response: User[]) => {
       this.users.data = response;
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.users.paginator = this.paginator
   }
 }
