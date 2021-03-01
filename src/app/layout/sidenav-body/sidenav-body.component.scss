@@ -2,6 +2,11 @@
     margin-left: 1.25rem;
 }
 
+.profile-data {
+    display: flex;
+    flex-direction: column;
+}
+
 .mat-icon-button ::ng-deep .mat-button-focus-overlay {
     display: none;
 }
