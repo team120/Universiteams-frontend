@@ -1,16 +1,39 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { MainComponent } from "./main/main.component";
+import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { AuthGuardService } from "./auth-guard.service";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoginComponent } from "./login/login.component";
-import { RegisterComponent } from "./register/register.component";
 import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
-  { path: "", component: MainComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "users", component: UsersComponent },
-  { path: ":", redirectTo: "/login", pathMatch: "full" },
+  {
+    path: "users",
+    component: UsersComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "login",
+    component: LoginComponent,
+    data: {
+      showNavbar: true, // false
+      showHeader: true, // false
+    },
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+  },
+  {
+    path: "account-settings",
+    component: AccountSettingsComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "",
+    redirectTo: "/dashboard",
+    pathMatch: "full",
+  },
 ];
 
 @NgModule({

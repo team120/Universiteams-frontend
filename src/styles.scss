@@ -1,16 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/*************************** General **************************/
 
-/* mat-button-colors */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.no-padding-dialog .mat-dialog-container {
+  padding: 0px !important;
+}
+
+/************************** Buttons ***************************/
+
+.btn-pd {
+  padding: 0.2rem;
+}
+
+.google-style {
+  color: #555555;
+  background-color: whitesmoke;
+}
+
+/*************************** Colors ***************************/
 
 .mat-upm-success {
-    color: #f0fff3;
-    background-color: #155724;
+  color: #f0fff3;
+  background-color: #155724;
+}
+
+.mat-upm-primary {
+  color: #f0fff3;
+  background-color:#4285f4;
 }
 
 .mat-upm-secondary {
-    color: #f0fff3;
-    background-color: #777777;
+  color: #f0fff3;
+  background-color: #777777;
+}
+
+.mat-upm-shade-1 {
+  color: #f0fff3;
+  background-color: #555555;
+}
+
+.mat-upm-shade-2 {
+  color: #f0fff3;
+  background-color: #373737;
+}
+
+.mat-upm-shade-3 {
+  color: #f0fff3;
+  background-color: #222222;
 }

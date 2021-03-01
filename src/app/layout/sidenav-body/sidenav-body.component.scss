@@ -1,0 +1,20 @@
+#toggleNavBtn {
+    margin-left: 1.25rem;
+}
+
+.profile-data {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-icon-button ::ng-deep .mat-button-focus-overlay {
+    display: none;
+}
+
+.mat-list-item .mat-icon, a {
+    margin-left: 0.5rem;
+}
+
+.lit-marg-b {
+    margin-bottom: 0.5rem;
+}

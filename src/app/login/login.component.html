@@ -1,27 +1,77 @@
-<div fxLayoutAlign="center center" fxFlexFill class="no-padding">
-  <mat-card fxFlex="80">
-    <mat-toolbar fxLayoutAlign="center center">University Projects Manager</mat-toolbar>
-    
-    <mat-card-content class="little-padding mat-upm-secondary">
-        <p>Facilitando la creación, gestión y formalización de proyectos de investigación universitaria</p>
-    </mat-card-content>
+<mat-card>
+  <mat-toolbar fxLayoutAlign="center center">University Projects Manager</mat-toolbar>
 
-    <form fxLayout="column" fxLayoutAlign="stretch" class="little-padding">
-      <mat-form-field>
-        <input matInput placeholder="Email o Nickname">
-      </mat-form-field>
+  <mat-card-content class="little-padding mat-upm-secondary">
+    <p>
+      Facilitando la creación, gestión y formalización de proyectos de investigación
+      universitaria
+    </p>
+  </mat-card-content>
 
-      <mat-form-field>
-        <input matInput type="password" placeholder="Contraseña">
-      </mat-form-field>
-      
-      <button mat-raised-button type="submit" color="primary">Iniciar Sesión</button>
-      <br/>
-      <br/>
-      <button mat-raised-button class="mat-upm-secondary">Registrarse</button>
-      <br/>
-      <button mat-raised-button class="mat-upm-secondary">Solo vengo de visita</button>
-    </form>
+  <mat-tab-group class="lit-pad-b" animationDuration="0ms" mat-stretch-tabs>
+    <mat-tab label="Login">
+      <form
+        [formGroup]="loginForm"
+        fxLayout="column"
+        fxLayoutAlign="stretch"
+        (ngSubmit)="onLoginSubmit()">
+        
+        <mat-form-field class="lit-pad-t">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="mail"/>
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
 
-  </mat-card>
-</div>
+        <button mat-raised-button type="submit" color="primary" class="btn-pd" [disabled]="!loginForm.valid">
+          Iniciar Sesión
+        </button>
+      </form>
+    </mat-tab>
+
+    <mat-tab label="Registrarse">
+      <form
+        [formGroup]="registerForm"
+        fxLayout="column"
+        fxLayoutAlign="stretch"
+        (ngSubmit)="onRegisterSubmit()">
+        
+        <mat-form-field class="lit-pad-t">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="mail"/>
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
+          <mat-icon matSuffix>lock</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="primary" class="btn-pd" [disabled]="!registerForm.valid">
+          Registrarse
+        </button>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+  
+  <mat-divider></mat-divider>
+
+  <div fxLayout="column" fxLayoutAlign="stretch">
+    <br/>
+    <button mat-raised-button class="google-style btn-pd">
+      <mat-icon svgIcon="logo" class="btn-icon"></mat-icon>
+      Conectarse con Google
+    </button>
+
+    <br/>
+    <button mat-raised-button color="primary" class="btn-pd">
+      <mat-icon class="btn-icon">nature_people</mat-icon>
+      Solo vengo de visita
+    </button>
+  </div>
+</mat-card>
