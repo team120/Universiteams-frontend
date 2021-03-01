@@ -1,19 +1,19 @@
-<mat-table [dataSource]="users" class="mat-elevation-z8">
+<mat-table [dataSource]="users" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.name}}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
       <mat-cell *matCellDef="let user">{{ user.lastName }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="mail">
-      <mat-header-cell *matHeaderCellDef>Mail</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mail</mat-header-cell>
       <mat-cell *matCellDef="let user">{{ user.mail }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="requestActions">
-      <mat-header-cell *matHeaderCellDef>Solicita Cargo</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Solicita Cargo</mat-header-cell>
       <mat-cell *matCellDef="let user">
         <button mat-raised-button color="primary">
           <mat-icon aria-hidden="false" aria-label="Edit">visibility</mat-icon>

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { LocalStorageService } from "../local-storage.service";
 import { User } from "../model/auth/user";
@@ -15,6 +16,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   columnsToDisplay = ["name", "lastName", "mail", "requestActions"]
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort
 
   constructor(
     private usersService: UsersService,
@@ -34,5 +36,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.users.paginator = this.paginator
+    this.users.sort = this.sort
   }
 }
