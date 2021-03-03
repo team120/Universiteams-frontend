@@ -14,6 +14,7 @@ import { UsersService } from "../users.service";
 export class UsersComponent implements OnInit, AfterViewInit {
   users = new MatTableDataSource<User>();
   columnsToDisplay = ["name", "lastName", "mail", "requestActions"]
+  filterRequestsAlreadyApplied = false
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort
@@ -37,5 +38,20 @@ export class UsersComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.users.paginator = this.paginator
     this.users.sort = this.sort
+  }
+
+  filter(event: Event){
+    const inputValue = (event.target as HTMLInputElement).value
+    this.users.filter = inputValue.trim().toLowerCase()
+  }
+
+  toggleFilterRequests(){
+    if (!this.filterRequestsAlreadyApplied) {
+      this.users.filter = "true"
+      this.filterRequestsAlreadyApplied = true
+    } else {
+      this.users.filter = ""
+      this.filterRequestsAlreadyApplied = false
+    }
   }
 }

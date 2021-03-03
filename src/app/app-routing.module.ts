@@ -13,14 +13,6 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: "login",
-    component: LoginComponent,
-    data: {
-      showNavbar: true, // false
-      showHeader: true, // false
-    },
-  },
-  {
     path: "dashboard",
     component: DashboardComponent,
   },
