@@ -1,11 +1,21 @@
 <mat-nav-list class="mat-upm-shade-2">
-  <button id="toggleNavBtn" mat-icon-button aria-label="Toggle navigation sidebar button"class="lit-marg-b" (click)="onClickToggleSidebarButton()">
-      <mat-icon>menu</mat-icon>
+  <button
+    id="toggleNavBtn"
+    mat-icon-button
+    aria-label="Toggle navigation sidebar button"
+    class="lit-marg-b"
+    (click)="onClickToggleSidebarButton()"
+  >
+    <mat-icon>menu</mat-icon>
   </button>
 
   <mat-divider></mat-divider>
 
-  <mat-list-item routerLink="/profile" routerLinkActive="active" class="mat-upm-shade-3">
+  <mat-list-item
+    routerLink="/profile"
+    routerLinkActive="active"
+    class="mat-upm-shade-3"
+  >
     <div class="profile-image">
       <!-- Insert profile image instead of mat-icon -->
       <mat-icon matListIcon>account_circle</mat-icon>
@@ -19,7 +29,8 @@
   <mat-divider></mat-divider>
 
   <mat-list-item routerLink="/dashboard" routerLinkActive="active">
-    <mat-icon matListIcon>home</mat-icon> <!-- Or a little UPM Logo -->
+    <mat-icon matListIcon>home</mat-icon>
+    <!-- Or a little UPM Logo -->
     <a>UPM Feed</a>
   </mat-list-item>
 
@@ -47,9 +58,14 @@
 
   <mat-divider></mat-divider>
 
-  <mat-list-item routerLink="/users" routerLinkActive="active" class="mat-upm-shade-3">
+  <mat-list-item routerLink="/users" routerLinkActive="active">
     <mat-icon matListIcon>face</mat-icon>
-    <a>Users (Modal Test)</a>
+    <a>Mis solicitudes</a>
+  </mat-list-item>
+
+  <mat-list-item routerLink="/projects" routerLinkActive="active">
+    <mat-icon matListIcon>search</mat-icon>
+    <a>Buscador de Proyectos</a>
   </mat-list-item>
 
   <mat-divider></mat-divider>
