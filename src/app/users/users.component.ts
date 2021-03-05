@@ -3,7 +3,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
 import { LocalStorageService } from "../local-storage.service";
-import { User } from "../model/auth/user";
+import { User } from "../model/user/user";
 import { UsersService } from "../users.service";
 
 @Component({
