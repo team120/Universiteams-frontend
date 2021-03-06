@@ -15,7 +15,11 @@ import { HeaderComponent } from "./layout/header/header.component";
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
 
-import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
@@ -24,12 +28,14 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatButtonModule } from "@angular/material/button";
 import { MatListModule } from "@angular/material/list";
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatTabsModule } from "@angular/material/tabs";
 import { MatIconModule } from "@angular/material/icon";
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator'; 
-import {MatSortModule} from '@angular/material/sort';
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
+import { MatSelectModule } from "@angular/material/select";
+import { ProjectsListComponent } from "./projects-list/projects-list.component";
+import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
   declarations: [
@@ -41,6 +47,7 @@ import { MatSelectModule } from '@angular/material/select';
     FooterComponent,
     HeaderComponent,
     SidenavBodyComponent,
+    ProjectsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
   ],
   providers: [
     {
@@ -74,4 +82,4 @@ import { MatSelectModule } from '@angular/material/select';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
