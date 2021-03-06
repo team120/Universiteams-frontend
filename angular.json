@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "upm-frontend"
+  "defaultProject": "upm-frontend",
+  "cli": {
+    "analytics": "4ce2974c-5f2b-41ff-afd0-0209d482a951"
+  }
 }

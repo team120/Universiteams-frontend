@@ -1,4 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { MatTableDataSource } from "@angular/material/table";
 import { LocalStorageService } from "../local-storage.service";
 import { User } from "../model/auth/user";
 import { UsersService } from "../users.service";
@@ -8,8 +11,13 @@ import { UsersService } from "../users.service";
   templateUrl: "./users.component.html",
   styleUrls: ["./users.component.scss"],
 })
-export class UsersComponent implements OnInit {
-  users: User[] = [];
+export class UsersComponent implements OnInit, AfterViewInit {
+  users = new MatTableDataSource<User>();
+  columnsToDisplay = ["name", "lastName", "mail", "requestActions"]
+  filterRequestsAlreadyApplied = false
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort
 
   constructor(
     private usersService: UsersService,
@@ -23,7 +31,27 @@ export class UsersComponent implements OnInit {
     }
     console.log(token);
     this.usersService.getUsers(token!).subscribe((response: User[]) => {
-      this.users = response;
+      this.users.data = response;
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.users.paginator = this.paginator
+    this.users.sort = this.sort
+  }
+
+  filter(event: Event){
+    const inputValue = (event.target as HTMLInputElement).value
+    this.users.filter = inputValue.trim().toLowerCase()
+  }
+
+  toggleFilterRequests(){
+    if (!this.filterRequestsAlreadyApplied) {
+      this.users.filter = "true"
+      this.filterRequestsAlreadyApplied = true
+    } else {
+      this.users.filter = ""
+      this.filterRequestsAlreadyApplied = false
+    }
   }
 }

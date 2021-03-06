@@ -1,3 +1,43 @@
-<p *ngFor="let user of users">
-  {{ user.mail }}
-</p>
+<div fxLayout="row" fxLayoutGap="10px" id="filter-input">
+  <mat-form-field fxFlex="1 2 calc(15em + 20px)">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="filter($event)" placeholder="User1">
+  </mat-form-field>
+  <button mat-raised-button (click)="toggleFilterRequests()">{{!filterRequestsAlreadyApplied ? "Filtrar Solicitudes" : "Ver Todas"}}</button>
+</div>
+
+
+<mat-table [dataSource]="users" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.name}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{ user.lastName }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mail">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Mail</mat-header-cell>
+      <mat-cell *matCellDef="let user">{{ user.mail }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="requestActions">
+      <mat-header-cell *matHeaderCellDef>Solicita Cargo</mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <div *ngIf="user.requestPosition">
+          <button mat-raised-button color="primary">
+            <mat-icon aria-hidden="false" aria-label="Revise">visibility</mat-icon>
+          </button>
+          <button mat-raised-button color="warn">
+            <mat-icon aria-hidden="false" aria-label="Decline">cancel</mat-icon>
+          </button>
+        </div>
+        <div *ngIf="!user.requestPosition">
+          NO
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>  

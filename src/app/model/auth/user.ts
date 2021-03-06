@@ -5,4 +5,5 @@ export class User {
     university?: {
         name: string
     }
+    requestPosition?: boolean
 }
