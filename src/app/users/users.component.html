@@ -11,7 +11,7 @@
 
 <mat-table [dataSource]="users" matSort class="mat-elevation-z8 little-side-marg">
     <ng-container matColumnDef="user">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.lastName}}, {{user.name}} <br> {{ user.mail }}
       </mat-cell>
     </ng-container>
