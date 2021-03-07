@@ -10,9 +10,18 @@
     margin-right: 1rem;
 }
 
-#filter-input { margin-bottom: 1vh; }
-
 .btnFilter {
     align-self: center;
     height: 100%;
+}
+
+#filter-input { margin-bottom: 1vh; }
+.users-container { padding: 0.5rem; }
+
+.mat-column-user {
+    flex: 0 0 75%;
+    word-wrap: break-word;
+    white-space: unset;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }

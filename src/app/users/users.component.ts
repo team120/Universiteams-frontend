@@ -13,7 +13,7 @@ import { UsersService } from "../users.service";
 })
 export class UsersComponent implements OnInit, AfterViewInit {
   users = new MatTableDataSource<User>();
-  columnsToDisplay = ["name", "lastName", "mail", "requestActions"]
+  columnsToDisplay = ["user", "requestActions"]
   filterRequestsAlreadyApplied = false
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

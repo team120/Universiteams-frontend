@@ -10,18 +10,10 @@
 </div>
 
 <mat-table [dataSource]="users" matSort class="mat-elevation-z8 little-side-marg">
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="user">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.name}}
+      <mat-cell *matCellDef="let user"> {{user.lastName}}, {{user.name}} <br> {{ user.mail }}
       </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="lastName">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.lastName }}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="mail">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Mail</mat-header-cell>
-      <mat-cell *matCellDef="let user">{{ user.mail }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="requestActions">
       <mat-header-cell *matHeaderCellDef>Solicita Cargo</mat-header-cell>
@@ -44,3 +36,19 @@
 </mat-table>
 
 <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8 little-side-marg"></mat-paginator>
+
+<!--
+<div [dataSource]="users" *ngFor="let user of users" class="user-container">
+  <mat-card>
+    <mat-card-header matLine>
+      <mat-card-title matLine>{{ user.mail }}</mat-card-title>
+      <mat-card-subtitle matLine>Marcos Juarez</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-chip-list matLine>
+        <mat-chip *ngFor="let user of users"> {{ user.mail }} </mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+-->
