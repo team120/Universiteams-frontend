@@ -1,13 +1,15 @@
-<div fxLayout="row" fxLayoutGap="10px" id="filter-input">
+<div fxLayout="row" fxLayoutGap="10px" id="filter-input" class="little-side-marg">
   <mat-form-field fxFlex="1 2 calc(15em + 20px)">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="filter($event)" placeholder="User1">
+    <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
-  <button mat-raised-button (click)="toggleFilterRequests()">{{!filterRequestsAlreadyApplied ? "Filtrar Solicitudes" : "Ver Todas"}}</button>
+  <button mat-raised-button class="btnFilter" (click)="toggleFilterRequests()">
+    {{!filterRequestsAlreadyApplied ? "Filtrar" : "Ver Todas"}}
+  </button>
 </div>
 
-
-<mat-table [dataSource]="users" matSort class="mat-elevation-z8">
+<mat-table [dataSource]="users" matSort class="mat-elevation-z8 little-side-marg">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.name}}
@@ -40,4 +42,5 @@
     <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
 </mat-table>
-<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>  
+
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8 little-side-marg"></mat-paginator>

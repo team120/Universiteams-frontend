@@ -34,7 +34,6 @@ import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatSelectModule } from "@angular/material/select";
-import { ProjectsListComponent } from "./projects-list/projects-list.component";
 import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
@@ -47,7 +46,6 @@ import { MatChipsModule } from "@angular/material/chips";
     FooterComponent,
     HeaderComponent,
     SidenavBodyComponent,
-    ProjectsListComponent,
   ],
   imports: [
     BrowserModule,
