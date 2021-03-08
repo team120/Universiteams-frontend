@@ -16,7 +16,10 @@
 }
 
 #filter-input { margin-bottom: 1vh; }
+.mat-header-cell { text-align: center; }
+.positionRequests { justify-content: center; }
 .users-container { padding: 0.5rem; }
+.mat-column-requestActions { justify-content: center; }
 
 .mat-column-user {
     flex: 0 0 75%;

@@ -17,13 +17,13 @@
     </ng-container>
     <ng-container matColumnDef="requestActions">
       <mat-header-cell *matHeaderCellDef>Solicita Cargo</mat-header-cell>
-      <mat-cell *matCellDef="let user">
+      <mat-cell *matCellDef="let user" class="positionRequests">
         <div *ngIf="user.requestPosition">
-          <button mat-raised-button color="primary">
+          <button mat-button>
             <mat-icon aria-hidden="false" aria-label="Revise">visibility</mat-icon>
           </button>
-          <button mat-raised-button color="warn">
-            <mat-icon aria-hidden="false" aria-label="Decline">cancel</mat-icon>
+          <button mat-button>
+            <mat-icon aria-hidden="false" aria-label="Decline">delete</mat-icon>
           </button>
         </div>
         <div *ngIf="!user.requestPosition">
@@ -36,19 +36,3 @@
 </mat-table>
 
 <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8 little-side-marg"></mat-paginator>
-
-<!--
-<div [dataSource]="users" *ngFor="let user of users" class="user-container">
-  <mat-card>
-    <mat-card-header matLine>
-      <mat-card-title matLine>{{ user.mail }}</mat-card-title>
-      <mat-card-subtitle matLine>Marcos Juarez</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-chip-list matLine>
-        <mat-chip *ngFor="let user of users"> {{ user.mail }} </mat-chip>
-      </mat-chip-list>
-    </mat-card-content>
-  </mat-card>
-</div>
--->
