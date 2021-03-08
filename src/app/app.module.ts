@@ -35,6 +35,7 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatSelectModule } from "@angular/material/select";
 import { MatChipsModule } from "@angular/material/chips";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { MatChipsModule } from "@angular/material/chips";
     MatSortModule,
     MatSelectModule,
     MatChipsModule,
+    MatSlideToggleModule,
   ],
   providers: [
     {

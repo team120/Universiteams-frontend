@@ -1,12 +1,12 @@
-<div fxLayout="row" fxLayoutGap="10px" id="filter-input" class="little-side-marg">
+<div fxLayout="row" fxLayoutGap="0.5rem" id="filter-input" class="little-side-marg">
   <mat-form-field fxFlex="1 2 calc(15em + 20px)">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="filter($event)" placeholder="User1">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="filter($event)" placeholder="John Doe">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
-  <button mat-raised-button class="btnFilter" (click)="toggleFilterRequests()">
-    {{!filterRequestsAlreadyApplied ? "Filtrar" : "Ver Todas"}}
-  </button>
+</div>
+<div fxLayout="row" fxLayoutGap="0.5rem" id="filter-slide" class="little-side-marg">
+  <mat-slide-toggle (click)="toggleFilterRequests()">Solo Solicitud Pendiente</mat-slide-toggle>
 </div>
 
 <mat-table [dataSource]="users" matSort class="mat-elevation-z8 little-side-marg">
