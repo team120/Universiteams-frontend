@@ -14,6 +14,7 @@ import { FooterComponent } from "./layout/footer/footer.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { ProjectsListComponent } from "./projects-list/projects-list.component";
 
 import {
   MatDialogModule,
@@ -47,6 +48,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     FooterComponent,
     HeaderComponent,
     SidenavBodyComponent,
+    ProjectsListComponent,
   ],
   imports: [
     BrowserModule,

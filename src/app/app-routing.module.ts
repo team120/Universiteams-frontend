@@ -4,13 +4,18 @@ import { AccountSettingsComponent } from "./account-settings/account-settings.co
 import { AuthGuardService } from "./auth-guard.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoginComponent } from "./login/login.component";
+import { ProjectsListComponent } from "./projects-list/projects-list.component";
 import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
   {
     path: "users",
     component: UsersComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "projects",
+    component: ProjectsListComponent,
   },
   {
     path: "dashboard",
@@ -19,7 +24,7 @@ const routes: Routes = [
   {
     path: "account-settings",
     component: AccountSettingsComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
   {
     path: "",
