@@ -4,8 +4,27 @@
     margin-right: auto;
     width: 97%;
 } */
-#filter-input {
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 1vh;
+
+.little-side-marg {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.btnFilter {
+    align-self: center;
+    height: 100%;
+}
+
+#filter-slide { margin-bottom: 2vh; }
+.mat-header-cell { text-align: center; }
+.positionRequests { justify-content: center; }
+.users-container { padding: 0.5rem; }
+.mat-column-requestActions { justify-content: center; }
+
+.mat-column-user {
+    flex: 0 0 75%;
+    word-wrap: break-word;
+    white-space: unset;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
