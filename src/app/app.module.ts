@@ -14,6 +14,7 @@ import { FooterComponent } from "./layout/footer/footer.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { ProjectsListComponent } from "./projects-list/projects-list.component";
 
 import {
   MatDialogModule,
@@ -34,8 +35,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatSelectModule } from "@angular/material/select";
-import { ProjectsListComponent } from "./projects-list/projects-list.component";
 import { MatChipsModule } from "@angular/material/chips";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { MatChipsModule } from "@angular/material/chips";
     MatSortModule,
     MatSelectModule,
     MatChipsModule,
+    MatSlideToggleModule,
   ],
   providers: [
     {
