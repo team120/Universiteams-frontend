@@ -5,3 +5,17 @@
 .user-tag {
   margin: 2px !important;
 }
+
+.search-header {
+  display: flex;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+.search-bar {
+  flex-grow: 1;
+}
+
+search-filters {
+  display: flex;
+}
