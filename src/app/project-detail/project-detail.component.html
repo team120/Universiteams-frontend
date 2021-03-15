@@ -1,4 +1,55 @@
+<h1 mat-dialog-title>Detalles</h1>
 <mat-dialog-content>
-    <p>Project Users:</p>
-    <p *ngFor="let user of data.users">{{user.name}}</p>
+    <mat-card>
+        <mat-card-header matLine>
+          <mat-card-title matLine>{{ project.name }}</mat-card-title>
+          <mat-card-subtitle matLine>Marcos Juárez</mat-card-subtitle>
+          <!-- Make "Project description" a property -->
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <div class="info">
+            <h3>Información</h3>
+            <!--
+            <p>Univeridad: {{project.universityName}}</p>
+            <p>Departamento: {{project.department}}</p>
+            <p>Projecto: {{ project.type }}</p>
+            <p>Fecha Comienzo: {{project.startDate}}</p>
+            -->
+            <p>Univeridad: UTN</p>
+            <p>Departamento: Sistemas</p>
+            <p>Projecto: {{ project.type }}</p>
+            <p>Fecha Comienzo: 03/04/2020</p>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="users">
+            <h3>Participantes del proyecto</h3>
+            <mat-chip-list matLine *ngIf="project.users !== undefined" class="user-tag">
+              <mat-chip *ngFor="let user of project.users" class="user-tag">
+                {{user.name}} {{user.lastName}}
+              </mat-chip>
+            </mat-chip-list>
+            <mat-chip-list matLine *ngElse>
+              <mat-chip class="user-tag">
+                No hay participantes en este proyecto
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="topics">
+            <h3>Tópicos</h3>
+            <mat-chip-list matLine> <!-- make a mat-chip *ngFor when the entity "topic" exists -->
+              <mat-chip class="topic-tag">Investigación</mat-chip>
+              <mat-chip class="topic-tag">Tecnología</mat-chip>
+              <mat-chip class="topic-tag">Python</mat-chip>
+            </mat-chip-list>
+          </div>
+          <!-- Última Publicación, o un link a la misma -->
+        </mat-card-content>
+      </mat-card>
 </mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cerrar</button>
+  <button mat-raised-button mat-dialog-close color="primary">Inscribirse</button>
+  <!-- Hacer funcionar boton de inscripción -->
+</mat-dialog-actions>

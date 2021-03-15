@@ -16,7 +16,7 @@ export class ProjectDetailComponent implements OnInit {
   universities: University[] = [];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Project,
+    @Inject(MAT_DIALOG_DATA) public project: Project,
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
   ) {}

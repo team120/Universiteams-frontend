@@ -104,13 +104,3 @@ export class ProjectsListComponent implements OnInit {
       });
   }
 }
-
-/* Project's Detail Connection
-@Component({
-  selector: "app-project-detail",
-  templateUrl: "../project-detail/project-detail.component.html",
-})
-export class ProjectDetailContent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Project) {}
-}
-*/

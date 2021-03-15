@@ -10,4 +10,6 @@ export class Project {
   type?: ProjectType;
   isDown?: boolean;
   users?: User[];
+  // University Name and Department?
+  // Start date
 }

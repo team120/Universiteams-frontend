@@ -1,0 +1,23 @@
+::ng-deep .mat-card-header-text {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+}
+
+::ng-deep .mat-dialog-container {
+    padding: 1rem;
+    max-width: 92vw !important;
+}
+
+//::ng-deep .cdk-overlay-container { }
+
+
+h1 {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+p, mat-card-subtitle { margin-bottom: 0rem; }
+h3 { margin-top: 1.5rem; }
+mat-dialog-content { padding: 1rem; }
+mat-card { padding: 0.25rem !important; }
+mat-divider { margin-top: 1rem; }
