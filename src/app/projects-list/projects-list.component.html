@@ -38,7 +38,12 @@
     </mat-card-header>
     <mat-card-content>
       <mat-chip-list matLine>
-        <mat-chip class="user-tag">{{project.users[0].name}} {{project.users[0].lastName}}, +{{project.users.length}} personas</mat-chip>
+        <mat-chip *ngIf="project.users !== undefined" class="user-tag">
+          {{project.users[0].name}} {{project.users[0].lastName}}, +{{project.users.length}} personas
+        </mat-chip>
+        <mat-chip *ngElse class="user-tag">
+          No hay participantes en este proyecto
+        </mat-chip>
       </mat-chip-list>
       <mat-chip-list matLine> <!-- make a mat-chip *ngFor when the entity "topic" exists -->
         <mat-chip class="topic-tag">Investigación</mat-chip>
