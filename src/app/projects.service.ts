@@ -13,15 +13,21 @@ export class ProjectsService {
 
   getProjects(params?: {
     generalSearchTerm?: string;
-    dateFrom?: Date;
-    isDown?: boolean;
     universityId?: number;
     departmentId?: number;
+    type?: string;
+    dateFrom?: Date;
+    isDown?: boolean;
   }): Observable<Project[]> {
     const url = `${this.baseUrl}/projects`
       .concat(params ? "?" : "")
       .concat(params?.generalSearchTerm ? `generalSearch=${params.generalSearchTerm}&` : "")
-      .concat(params?.dateFrom ? `dateFrom${params.dateFrom}&` : "");
+      .concat(params?.universityId ? `universityId=${params.universityId}&` : "")
+      .concat(params?.departmentId ? `departmentId=${params.departmentId}&` : "")
+      .concat(params?.type ? `type=${params.type}&` : "")
+      .concat(params?.dateFrom ? `dateFrom=${params.dateFrom}&` : "")
+      .concat(params?.isDown ? `isDown=${params.isDown}&` : "");
+
     console.log(url);
     return this.httpClient.get<Project[]>(url);
   }
