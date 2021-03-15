@@ -11,8 +11,24 @@ export class ProjectsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getProjects(): Observable<Project[]> {
-    const url = `${this.baseUrl}/projects`;
+  getProjects(params?: {
+    generalSearchTerm?: string;
+    universityId?: number;
+    departmentId?: number;
+    type?: string;
+    dateFrom?: Date;
+    isDown?: boolean;
+  }): Observable<Project[]> {
+    const url = `${this.baseUrl}/projects`
+      .concat(params ? "?" : "")
+      .concat(params?.generalSearchTerm ? `generalSearch=${params.generalSearchTerm}&` : "")
+      .concat(params?.universityId ? `universityId=${params.universityId}&` : "")
+      .concat(params?.departmentId ? `departmentId=${params.departmentId}&` : "")
+      .concat(params?.type ? `type=${params.type}&` : "")
+      .concat(params?.dateFrom ? `dateFrom=${params.dateFrom}&` : "")
+      .concat(params?.isDown ? `isDown=${params.isDown}&` : "");
+
+    console.log(url);
     return this.httpClient.get<Project[]>(url);
   }
 }

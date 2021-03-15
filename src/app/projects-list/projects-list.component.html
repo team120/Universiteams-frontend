@@ -1,13 +1,58 @@
-  <div *ngFor="let project of projects" class="project-container">
+<form class="search-area" [formGroup]="projectFilterForm" class="little-side-marg" (ngSubmit)="onSubmit()">
+  <div class="search-header">
+    <mat-form-field class="search-bar">
+      <mat-label>Buscar proyectos</mat-label>
+      <input
+        matInput
+        placeholder="Por nombre de proyecto o por usuario"
+        formControlName="generalSearch"
+      />
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="!projectFilterForm.valid" aria-label="check">
+      <mat-icon>check</mat-icon>
+    </button>
+    <button mat-button type="menu" (click)="openFilterMenu()">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+  </div>
+  <div [@openFilterMenu]="isFilterMenuOpen ? 'open' : 'closed'" class="search-filters">
     <mat-card>
-      <mat-card-header matLine>
-        <mat-card-title matLine>{{ project.name }}</mat-card-title>
-        <mat-card-subtitle matLine>Marcos Juarez</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-chip-list matLine>
-          <mat-chip class="user-tag" *ngFor="let user of project.users"> {{ user.name }} </mat-chip>
-        </mat-chip-list>
-      </mat-card-content>
+      <mat-form-field>
+        <mat-label>University</mat-label>
+        <mat-select formControlName="university">
+          <mat-option>Cualquiera</mat-option>
+          <mat-option *ngFor="let university of universities" [value]="university.id">
+            {{ university.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </mat-card>
   </div>
+</form>
+
+<div *ngFor="let project of projects" class="project-container">
+  <mat-card>
+    <mat-card-header matLine>
+      <mat-card-title matLine>{{ project.name }}</mat-card-title>
+      <mat-card-subtitle matLine>Marcos Juárez</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-chip-list matLine>
+        <mat-chip *ngIf="project.users !== undefined" class="user-tag">
+          {{project.users[0].name}} {{project.users[0].lastName}}, +{{project.users.length}} personas
+        </mat-chip>
+        <mat-chip *ngElse class="user-tag">
+          No hay participantes en este proyecto
+        </mat-chip>
+      </mat-chip-list>
+      <mat-chip-list matLine> <!-- make a mat-chip *ngFor when the entity "topic" exists -->
+        <mat-chip class="topic-tag">Investigación</mat-chip>
+        <mat-chip class="topic-tag">Tecnología</mat-chip>
+        <mat-chip class="topic-tag">Python</mat-chip>
+        <!--<mat-chip class="user-tag" *ngFor="let user of project.users">
+          {{ user.name }}
+        </mat-chip>-->
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+</div>
