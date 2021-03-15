@@ -1,4 +1,4 @@
-<form class="search-area" [formGroup]="projectFilterForm" (ngSubmit)="onSubmit()">
+<form class="search-area" [formGroup]="projectFilterForm" class="little-side-marg" (ngSubmit)="onSubmit()">
   <div class="search-header">
     <mat-form-field class="search-bar">
       <mat-label>Buscar proyectos</mat-label>
@@ -13,7 +13,6 @@
     </button>
     <button mat-button type="menu" (click)="openFilterMenu()">
       <mat-icon>filter_list</mat-icon>
-      FILTER
     </button>
   </div>
   <div [@openFilterMenu]="isFilterMenuOpen ? 'open' : 'closed'" class="search-filters">
@@ -35,13 +34,19 @@
   <mat-card>
     <mat-card-header matLine>
       <mat-card-title matLine>{{ project.name }}</mat-card-title>
-      <mat-card-subtitle matLine>Marcos Juarez</mat-card-subtitle>
+      <mat-card-subtitle matLine>Marcos Juárez</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <mat-chip-list matLine>
-        <mat-chip class="user-tag" *ngFor="let user of project.users">
+        <mat-chip class="user-tag">{{project.users[0].name}} {{project.users[0].lastName}}, +{{project.users.length}} personas</mat-chip>
+      </mat-chip-list>
+      <mat-chip-list matLine> <!-- make a mat-chip *ngFor when the entity "topic" exists -->
+        <mat-chip class="topic-tag">Investigación</mat-chip>
+        <mat-chip class="topic-tag">Tecnología</mat-chip>
+        <mat-chip class="topic-tag">Python</mat-chip>
+        <!--<mat-chip class="user-tag" *ngFor="let user of project.users">
           {{ user.name }}
-        </mat-chip>
+        </mat-chip>-->
       </mat-chip-list>
     </mat-card-content>
   </mat-card>
