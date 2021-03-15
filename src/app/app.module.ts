@@ -37,6 +37,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatSelectModule } from "@angular/material/select";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     HeaderComponent,
     SidenavBodyComponent,
     ProjectsListComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     BrowserModule,
