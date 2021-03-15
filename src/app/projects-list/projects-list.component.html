@@ -31,7 +31,7 @@
 </form>
 
 <div *ngFor="let project of projects" class="project-container">
-  <mat-card>
+  <mat-card (click)="openDetails(project)"> <!-- We need the ID if we don't want to pass the entire project -->
     <mat-card-header matLine>
       <mat-card-title matLine>{{ project.name }}</mat-card-title>
       <mat-card-subtitle matLine>Marcos Juárez</mat-card-subtitle>
@@ -49,9 +49,6 @@
         <mat-chip class="topic-tag">Investigación</mat-chip>
         <mat-chip class="topic-tag">Tecnología</mat-chip>
         <mat-chip class="topic-tag">Python</mat-chip>
-        <!--<mat-chip class="user-tag" *ngFor="let user of project.users">
-          {{ user.name }}
-        </mat-chip>-->
       </mat-chip-list>
     </mat-card-content>
   </mat-card>

@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
+import { MatDialog } from '@angular/material/dialog';
 import { Project } from "../model/project/project";
 import { University } from "../model/university/university";
 import { ProjectsService } from "../projects.service";
@@ -63,7 +64,8 @@ export class ProjectsListComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private universitiesService: UniversitiesService
+    private universitiesService: UniversitiesService,
+    private detailView: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -77,6 +79,13 @@ export class ProjectsListComponent implements OnInit {
 
   openFilterMenu() {
     this.isFilterMenuOpen = this.isFilterMenuOpen ? false : true;
+  }
+
+  openDetails(project: Project) { // We need the ID if we don't want to pass the entire project
+    const detailRef = this.detailView.open(ProjectDetailContent);
+    detailRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`); // Just Testing
+    });
   }
 
   onSubmit() {
@@ -94,3 +103,10 @@ export class ProjectsListComponent implements OnInit {
       });
   }
 }
+
+// Project's Detail Connection
+@Component({
+  selector: "app-project-detail",
+  templateUrl: "../project-detail/project-detail.component.html",
+})
+export class ProjectDetailContent {}
