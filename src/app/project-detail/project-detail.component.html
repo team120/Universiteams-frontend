@@ -1,13 +1,4 @@
 <mat-dialog-content>
-    <p>Project Users:</p>  <!-- *ngFor="let user of project(...)" We need ID -->
-    <p>Pepe 1</p>
-    <p>Pepe 2</p>
+    <p>Project Users:</p>
+    <p *ngFor="let user of data.users">{{user.name}}</p>
 </mat-dialog-content>
-
-<!--
-<mat-chip-list>
-  <mat-chip class="user-tag" *ngFor="let user of project.users">
-    {{ user.name }}
-  </mat-chip>
-</mat-chip-list>
--->

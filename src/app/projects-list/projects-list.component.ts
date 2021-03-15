@@ -1,11 +1,12 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Project } from "../model/project/project";
 import { University } from "../model/university/university";
 import { ProjectsService } from "../projects.service";
 import { UniversitiesService } from "../universities.service";
+import { ProjectDetailComponent } from "../project-detail/project-detail.component";
 
 @Component({
   selector: "app-projects-list",
@@ -82,7 +83,7 @@ export class ProjectsListComponent implements OnInit {
   }
 
   openDetails(project: Project) { // We need the ID if we don't want to pass the entire project
-    const detailRef = this.detailView.open(ProjectDetailContent);
+    const detailRef = this.detailView.open(ProjectDetailComponent, {data: project});
     detailRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`); // Just Testing
     });
@@ -104,9 +105,12 @@ export class ProjectsListComponent implements OnInit {
   }
 }
 
-// Project's Detail Connection
+/* Project's Detail Connection
 @Component({
   selector: "app-project-detail",
   templateUrl: "../project-detail/project-detail.component.html",
 })
-export class ProjectDetailContent {}
+export class ProjectDetailContent {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Project) {}
+}
+*/

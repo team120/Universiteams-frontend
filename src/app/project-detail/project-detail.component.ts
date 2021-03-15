@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from "@angular/core";
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Project } from "../model/project/project";
 import { University } from "../model/university/university";
 import { ProjectsService } from "../projects.service";
@@ -15,8 +16,9 @@ export class ProjectDetailComponent implements OnInit {
   universities: University[] = [];
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Project,
     private projectsService: ProjectsService,
-    private universitiesService: UniversitiesService
+    private universitiesService: UniversitiesService,
   ) {}
 
   ngOnInit(): void {
