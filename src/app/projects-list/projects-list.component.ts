@@ -38,6 +38,8 @@ export class ProjectsListComponent implements OnInit {
     university: new FormControl(""),
     department: new FormControl(""),
     type: new FormControl(""),
+    isDown: new FormControl(""),
+    dateFrom: new FormControl(""),
   });
 
   get generalSearch() {
@@ -51,6 +53,12 @@ export class ProjectsListComponent implements OnInit {
   }
   get type() {
     return this.projectFilterForm.get("type");
+  }
+  get isDown() {
+    return this.projectFilterForm.get("isDown");
+  }
+  get dateFrom() {
+    return this.projectFilterForm.get("dateFrom");
   }
 
   constructor(
@@ -73,7 +81,14 @@ export class ProjectsListComponent implements OnInit {
 
   onSubmit() {
     this.projectsService
-      .getProjects({ generalSearchTerm: this.generalSearch?.value })
+      .getProjects({
+        generalSearchTerm: this.generalSearch?.value,
+        universityId: this.university?.value,
+        departmentId: this.department?.value,
+        type: this.type?.value,
+        isDown: this.isDown?.value,
+        dateFrom: this.dateFrom?.value,
+      })
       .subscribe((projects) => {
         this.projects = projects;
       });
