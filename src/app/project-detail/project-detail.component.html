@@ -3,17 +3,12 @@
   <mat-divider></mat-divider>
 
   <div class="info">
-    <h3>Información</h3>
-    <!--
-    <p>Universidad: {{ project.universityName }}</p>
-    <p>Departamento: {{ project.department }}</p>
+    <h3>Información</h3>    
+    <p>Universidad: UTN</p> <!-- university nested needed -->
+    <!-- <p>Universidad: {{ project.department.university.name }}</p> -->
+    <p>Departamento: {{ project.department==undefined ? "Independiente" : project.department.name }}</p>
     <p>Projecto: {{ project.type }}</p>
-    <p>Fecha Comienzo: {{ project.startDate }}</p>
-    -->
-    <p>Universidad: UTN</p>
-    <p>Departamento: Sistemas</p>
-    <p>Projecto: {{ project.type }}</p>
-    <p>Fecha Comienzo: 03/04/2020</p>
+    <p>Fecha Comienzo: {{ project.creationDate?.toString()?.substr(0, 10) }}</p>
   </div>
  <mat-divider></mat-divider>
 

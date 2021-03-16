@@ -13,4 +13,5 @@ export class Project {
   users?: User[];
   department?: Department;
   creationDate?: Date;
+  // Leader, roles, topics, lastPublication...
 }

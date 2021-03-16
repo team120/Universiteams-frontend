@@ -31,8 +31,10 @@
   <mat-card (click)="openDetails(project)"> <!-- We need the ID if we don't want to pass the entire project -->
     <mat-card-header matLine>
       <mat-card-title matLine>{{ project.name }}</mat-card-title>
-      <mat-card-subtitle matLine>{{ project.type }} | 03/04/2020 | Sistemas</mat-card-subtitle>
-      <!-- Add DepartmentName and StartDate to DTO's properties -->
+      <mat-card-subtitle matLine>
+        {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} | {{ project.department==undefined ? "Independiente" : project.department.name }}
+      </mat-card-subtitle>
+
     </mat-card-header>
     <mat-card-content>
       <mat-chip-list matLine>
