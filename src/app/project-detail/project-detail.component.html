@@ -4,8 +4,7 @@
 
   <div class="info">
     <h3>Información</h3>    
-    <p>Universidad: UTN</p> <!-- university nested needed -->
-    <!-- <p>Universidad: {{ project.department.university.name }}</p> -->
+    <p>Universidad: {{ project.department?.university?.name}}</p>
     <p>Departamento: {{ project.department==undefined ? "Independiente" : project.department.name }}</p>
     <p>Projecto: {{ project.type }}</p>
     <p>Fecha Comienzo: {{ project.creationDate?.toString()?.substr(0, 10) }}</p>
