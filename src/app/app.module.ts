@@ -16,11 +16,7 @@ import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.compone
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
 import { ProjectsListComponent } from "./projects-list/projects-list.component";
 
-import {
-  MatDialogModule,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
@@ -36,8 +32,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatSelectModule } from "@angular/material/select";
 import { MatChipsModule } from "@angular/material/chips";
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { ProjectDetailComponent } from "./project-detail/project-detail.component";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -76,6 +73,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
     MatSelectModule,
     MatChipsModule,
     MatSlideToggleModule,
+    MatDatepickerModule,
   ],
   providers: [
     {
