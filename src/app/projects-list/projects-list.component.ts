@@ -1,12 +1,13 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Project } from "../model/project/project";
 import { University } from "../model/university/university";
 import { ProjectsService } from "../projects.service";
 import { UniversitiesService } from "../universities.service";
 import { ProjectDetailComponent } from "../project-detail/project-detail.component";
+import { projectTypesList } from "../model/project/project-type";
 
 @Component({
   selector: "app-projects-list",
@@ -35,6 +36,7 @@ export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
   isFilterMenuOpen = false;
   universities: University[] = [];
+
   projectFilterForm = new FormGroup({
     generalSearch: new FormControl(""),
     university: new FormControl(""),
@@ -63,6 +65,14 @@ export class ProjectsListComponent implements OnInit {
     return this.projectFilterForm.get("dateFrom");
   }
 
+  get selectedUniversity() {
+    return this.universities.find((university) => university.id === this.university?.value);
+  }
+
+  get projectTypes() {
+    return projectTypesList;
+  }
+
   constructor(
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
@@ -82,10 +92,11 @@ export class ProjectsListComponent implements OnInit {
     this.isFilterMenuOpen = this.isFilterMenuOpen ? false : true;
   }
 
-  openDetails(project: Project) { // We need the ID if we don't want to pass the entire project
-    const detailRef = this.detailView.open(ProjectDetailComponent, {data: project});
-    detailRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`); // Just Testing
+  openDetails(project: Project) {
+    // We need the ID if we don't want to pass the entire project
+    const detailRef = this.detailView.open(ProjectDetailComponent, { data: project });
+    detailRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`); // Just Testing
     });
   }
 
