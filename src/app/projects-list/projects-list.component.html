@@ -29,11 +29,12 @@
   <div
     [@openFilterMenu]="isFilterMenuOpen ? 'open' : 'closed'"
     fxLayout="row"
-    fxLayoutAlign="space-evenly center"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="15px"
     class="search-filters"
   >
     <mat-card>
-      <mat-form-field class="filter-field" fxFill>
+      <mat-form-field class="filter-field" fxFlex fxFlexOffset="15px" fxFlexAlign="center">
         <mat-label>University</mat-label>
         <mat-select formControlName="university">
           <mat-option>Cualquiera</mat-option>
@@ -42,7 +43,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="filter-field" fxFill>
+      <mat-form-field class="filter-field" fxFlex fxFlexOffset="15px" fxFlexAlign="center">
         <mat-label>Department</mat-label>
         <mat-select formControlName="department">
           <mat-option>Cualquiera</mat-option>
@@ -54,15 +55,21 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field fxFill>
+      <mat-form-field fxFlex fxFlexOffset="15px" fxFlexAlign="center">
         <mat-label>Tipo</mat-label>
         <mat-select formControlName="type">
           <mat-option>Cualquiera</mat-option>
           <mat-option *ngFor="let type of projectTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-slide-toggle fxFill formControlName="isDown">Descontinuados</mat-slide-toggle>
-      <mat-form-field fxFill>
+      <mat-slide-toggle
+        fxFlex
+        fxFlexOffset="15px"
+        fxFlexAlign="center"
+        formControlName="isDown"
+        >Descontinuados</mat-slide-toggle
+      >
+      <mat-form-field fxFlex fxFlexOffset="15px" fxFlexAlign="center">
         <mat-label>Creados desde</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
