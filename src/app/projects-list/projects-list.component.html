@@ -26,9 +26,14 @@
       <mat-icon>filter_list</mat-icon>
     </button>
   </div>
-  <div [@openFilterMenu]="isFilterMenuOpen ? 'open' : 'closed'" class="search-filters">
+  <div
+    [@openFilterMenu]="isFilterMenuOpen ? 'open' : 'closed'"
+    fxLayout="row"
+    fxLayoutAlign="space-evenly center"
+    class="search-filters"
+  >
     <mat-card>
-      <mat-form-field class="filter-field">
+      <mat-form-field class="filter-field" fxFill>
         <mat-label>University</mat-label>
         <mat-select formControlName="university">
           <mat-option>Cualquiera</mat-option>
@@ -37,7 +42,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="filter-field">
+      <mat-form-field class="filter-field" fxFill>
         <mat-label>Department</mat-label>
         <mat-select formControlName="department">
           <mat-option>Cualquiera</mat-option>
@@ -49,15 +54,15 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field fxFill>
         <mat-label>Tipo</mat-label>
         <mat-select formControlName="type">
           <mat-option>Cualquiera</mat-option>
           <mat-option *ngFor="let type of projectTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-slide-toggle formControlName="isDown">Descontinuados</mat-slide-toggle>
-      <mat-form-field>
+      <mat-slide-toggle fxFill formControlName="isDown">Descontinuados</mat-slide-toggle>
+      <mat-form-field fxFill>
         <mat-label>Creados desde</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
