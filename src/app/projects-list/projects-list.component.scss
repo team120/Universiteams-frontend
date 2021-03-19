@@ -28,6 +28,12 @@
   height: 50%;
 }
 
+.filters {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
 ::ng-deep .mat-card-header-text {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important;

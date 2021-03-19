@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Project } from "../model/project/project";
@@ -8,34 +8,17 @@ import { ProjectsService } from "../projects.service";
 import { UniversitiesService } from "../universities.service";
 import { ProjectDetailComponent } from "../project-detail/project-detail.component";
 import { projectTypesList } from "../model/project/project-type";
+import { MatDrawer } from "@angular/material/sidenav";
 
 @Component({
   selector: "app-projects-list",
-  animations: [
-    trigger("openFilterMenu", [
-      state(
-        "closed",
-        style({
-          display: "none",
-        })
-      ),
-      state(
-        "open",
-        style({
-          display: "block",
-        })
-      ),
-      transition("closed => open", [animate("0.2s ease-in-out")]),
-      transition("open => closed", [animate("0.2s ease-in-out")]),
-    ]),
-  ],
   templateUrl: "./projects-list.component.html",
   styleUrls: ["./projects-list.component.scss"],
 })
 export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
-  isFilterMenuOpen = false;
   universities: University[] = [];
+  @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
 
   projectFilterForm = new FormGroup({
     generalSearch: new FormControl(""),
@@ -89,7 +72,7 @@ export class ProjectsListComponent implements OnInit {
   }
 
   openFilterMenu() {
-    this.isFilterMenuOpen = this.isFilterMenuOpen ? false : true;
+    this.filterDrawer?.toggle();
   }
 
   openDetails(project: Project) {

@@ -15,89 +15,91 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
     <button
-      mat-raised-button
+      mat-button
       class="submitSearch"
       [disabled]="!projectFilterForm.valid"
       aria-label="check"
     >
       <mat-icon>check</mat-icon>
     </button>
-    <button mat-raised-button class="filterButton" type="menu" (click)="openFilterMenu()">
+    <button mat-button class="filterButton" type="menu" (click)="openFilterMenu()">
       <mat-icon>filter_list</mat-icon>
     </button>
   </div>
-  <div
-    [@openFilterMenu]="isFilterMenuOpen ? 'open' : 'closed'"
-    fxLayout="row"
-    fxLayoutAlign="space-evenly center"
-    class="search-filters"
-  >
-    <mat-card>
-      <mat-form-field class="filter-field" fxFill>
-        <mat-label>University</mat-label>
-        <mat-select formControlName="university">
-          <mat-option>Cualquiera</mat-option>
-          <mat-option *ngFor="let university of universities" [value]="university.id">
-            {{ university.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field class="filter-field" fxFill>
-        <mat-label>Department</mat-label>
-        <mat-select formControlName="department">
-          <mat-option>Cualquiera</mat-option>
-          <mat-option
-            *ngFor="let department of selectedUniversity?.departments"
-            [value]="department.id"
-          >
-            {{ department.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field fxFill>
-        <mat-label>Tipo</mat-label>
-        <mat-select formControlName="type">
-          <mat-option>Cualquiera</mat-option>
-          <mat-option *ngFor="let type of projectTypes" [value]="type">{{ type }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-slide-toggle fxFill formControlName="isDown">Descontinuados</mat-slide-toggle>
-      <mat-form-field fxFill>
-        <mat-label>Creados desde</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker startView="multi-year"></mat-datepicker>
-      </mat-form-field>
-    </mat-card>
-  </div>
+  <mat-drawer-container>
+    <mat-drawer mode="side" opened position="end">
+      <div class="filters">
+        <mat-form-field class="filter-field" fxFlex>
+          <mat-label>University</mat-label>
+          <mat-select formControlName="university">
+            <mat-option>Cualquiera</mat-option>
+            <mat-option *ngFor="let university of universities" [value]="university.id">
+              {{ university.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="filter-field" fxFlex>
+          <mat-label>Department</mat-label>
+          <mat-select formControlName="department">
+            <mat-option>Cualquiera</mat-option>
+            <mat-option
+              *ngFor="let department of selectedUniversity?.departments"
+              [value]="department.id"
+            >
+              {{ department.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="filter-field" fxFlex>
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="type">
+            <mat-option>Cualquiera</mat-option>
+            <mat-option *ngFor="let type of projectTypes" [value]="type">{{
+              type
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-slide-toggle formControlName="isDown">Descontinuados</mat-slide-toggle>
+        <mat-form-field class="filter-field" fxFlex>
+          <mat-label>Creados desde</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content
+      ><div *ngFor="let project of projects" class="project-container">
+        <mat-card (click)="openDetails(project)">
+          <!-- We need the ID if we don't want to pass the entire project -->
+          <mat-card-header matLine>
+            <mat-card-title matLine>{{ project.name }}</mat-card-title>
+            <mat-card-subtitle matLine>
+              {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} |
+              {{ project.department == undefined ? "Independiente" : project.department.name }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-chip-list matLine>
+              <mat-chip *ngIf="project.users !== undefined" class="user-tag">
+                {{ project.users[0].name }} {{ project.users[0].lastName }}, +{{
+                  project.users.length
+                }}
+                personas
+              </mat-chip>
+              <mat-chip *ngElse class="user-tag">
+                No hay participantes en este proyecto
+              </mat-chip>
+            </mat-chip-list>
+            <mat-chip-list matLine>
+              <!-- make a mat-chip *ngFor when the entity "topic" exists -->
+              <mat-chip class="topic-tag">Investigación</mat-chip>
+              <mat-chip class="topic-tag">Tecnología</mat-chip>
+              <mat-chip class="topic-tag">Python</mat-chip>
+            </mat-chip-list>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
 </form>
-
-<div *ngFor="let project of projects" class="project-container">
-  <mat-card (click)="openDetails(project)">
-    <!-- We need the ID if we don't want to pass the entire project -->
-    <mat-card-header matLine>
-      <mat-card-title matLine>{{ project.name }}</mat-card-title>
-      <mat-card-subtitle matLine>
-        {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} |
-        {{ project.department == undefined ? "Independiente" : project.department.name }}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-chip-list matLine>
-        <mat-chip *ngIf="project.users !== undefined" class="user-tag">
-          {{ project.users[0].name }} {{ project.users[0].lastName }}, +{{
-            project.users.length
-          }}
-          personas
-        </mat-chip>
-        <mat-chip *ngElse class="user-tag"> No hay participantes en este proyecto </mat-chip>
-      </mat-chip-list>
-      <mat-chip-list matLine>
-        <!-- make a mat-chip *ngFor when the entity "topic" exists -->
-        <mat-chip class="topic-tag">Investigación</mat-chip>
-        <mat-chip class="topic-tag">Tecnología</mat-chip>
-        <mat-chip class="topic-tag">Python</mat-chip>
-      </mat-chip-list>
-    </mat-card-content>
-  </mat-card>
-</div>
