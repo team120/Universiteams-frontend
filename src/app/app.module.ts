@@ -35,6 +35,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { ProjectDetailComponent } from "./project-detail/project-detail.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatChipsModule,
     MatSlideToggleModule,
     MatDatepickerModule,
+    MatMomentDateModule,
   ],
   providers: [
     {
