@@ -59,6 +59,9 @@
       <mat-slide-toggle formControlName="isDown">Descontinuados</mat-slide-toggle>
       <mat-form-field>
         <mat-label>Creados desde</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year"></mat-datepicker>
       </mat-form-field>
     </mat-card>
   </div>
