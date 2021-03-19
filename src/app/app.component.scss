@@ -10,6 +10,7 @@ mat-sidenav {
   height: 100vh;
 }
 
+// router-outlet content is added as a sibling, not as a child
 .outlet {
   margin-top: 1rem;
   margin-bottom: 1rem;

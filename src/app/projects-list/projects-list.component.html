@@ -68,37 +68,41 @@
         </mat-form-field>
       </div>
     </mat-drawer>
-    <mat-drawer-content
-      ><div *ngFor="let project of projects" class="project-container">
-        <mat-card (click)="openDetails(project)">
-          <!-- We need the ID if we don't want to pass the entire project -->
-          <mat-card-header matLine>
-            <mat-card-title matLine>{{ project.name }}</mat-card-title>
-            <mat-card-subtitle matLine>
-              {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} |
-              {{ project.department == undefined ? "Independiente" : project.department.name }}
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-chip-list matLine>
-              <mat-chip *ngIf="project.users !== undefined" class="user-tag">
-                {{ project.users[0].name }} {{ project.users[0].lastName }}, +{{
-                  project.users.length
+    <mat-drawer-content>
+      <div class="projects-container">
+        <div *ngFor="let project of projects" class="project">
+          <mat-card (click)="openDetails(project)">
+            <!-- We need the ID if we don't want to pass the entire project -->
+            <mat-card-header matLine>
+              <mat-card-title matLine>{{ project.name }}</mat-card-title>
+              <mat-card-subtitle matLine>
+                {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} |
+                {{
+                  project.department == undefined ? "Independiente" : project.department.name
                 }}
-                personas
-              </mat-chip>
-              <mat-chip *ngElse class="user-tag">
-                No hay participantes en este proyecto
-              </mat-chip>
-            </mat-chip-list>
-            <mat-chip-list matLine>
-              <!-- make a mat-chip *ngFor when the entity "topic" exists -->
-              <mat-chip class="topic-tag">Investigación</mat-chip>
-              <mat-chip class="topic-tag">Tecnología</mat-chip>
-              <mat-chip class="topic-tag">Python</mat-chip>
-            </mat-chip-list>
-          </mat-card-content>
-        </mat-card>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <mat-chip-list matLine>
+                <mat-chip *ngIf="project.users !== undefined" class="user-tag">
+                  {{ project.users[0].name }} {{ project.users[0].lastName }}, +{{
+                    project.users.length
+                  }}
+                  personas
+                </mat-chip>
+                <mat-chip *ngElse class="user-tag">
+                  No hay participantes en este proyecto
+                </mat-chip>
+              </mat-chip-list>
+              <mat-chip-list matLine>
+                <!-- make a mat-chip *ngFor when the entity "topic" exists -->
+                <mat-chip class="topic-tag">Investigación</mat-chip>
+                <mat-chip class="topic-tag">Tecnología</mat-chip>
+                <mat-chip class="topic-tag">Python</mat-chip>
+              </mat-chip-list>
+            </mat-card-content>
+          </mat-card>
+        </div>
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
