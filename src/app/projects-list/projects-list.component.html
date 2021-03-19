@@ -14,14 +14,6 @@
       />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-    <button
-      mat-button
-      class="submitSearch"
-      [disabled]="!projectFilterForm.valid"
-      aria-label="check"
-    >
-      <mat-icon>check</mat-icon>
-    </button>
     <button mat-button class="filterButton" type="menu" (click)="openFilterMenu()">
       <mat-icon>filter_list</mat-icon>
     </button>
@@ -66,6 +58,15 @@
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker startView="multi-year"></mat-datepicker>
         </mat-form-field>
+        <button
+          mat-raised-button
+          color="accent"
+          class="submitSearch"
+          [disabled]="!projectFilterForm.valid"
+          aria-label="check"
+        >
+          <mat-icon>check</mat-icon>Aplicar
+        </button>
       </div>
     </mat-drawer>
     <mat-drawer-content>
