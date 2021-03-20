@@ -1,5 +1,5 @@
 .projects-container {
-  min-height: 80vh;
+  min-height: 55vh;
 }
 
 .project {
@@ -26,10 +26,16 @@
   flex-grow: 1;
 }
 
-.submitSearch,
-.filterButton {
+.toggleFilterMenu,
+.applyFilters,
+.resetFilters {
   margin-left: 0.5rem;
+  margin-right: 0.5rem;
   height: 50%;
+}
+
+.applyFilters {
+  margin-bottom: 0.1rem;
 }
 
 .filters {

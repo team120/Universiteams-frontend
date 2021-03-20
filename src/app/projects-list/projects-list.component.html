@@ -14,14 +14,14 @@
       />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-    <button mat-button class="filterButton" type="menu" (click)="openFilterMenu()">
+    <button mat-button class="toggleFilterMenu" type="menu" (click)="openFilterMenu()">
       <mat-icon>filter_list</mat-icon>
     </button>
   </div>
   <mat-drawer-container>
     <mat-drawer [mode]="isMobile ? 'over' : 'side'" opened position="end">
       <div class="filters">
-        <mat-form-field class="filter-field" fxFlex>
+        <mat-form-field class="filter-field">
           <mat-label>University</mat-label>
           <mat-select formControlName="university">
             <mat-option>Cualquiera</mat-option>
@@ -30,7 +30,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="filter-field" fxFlex>
+        <mat-form-field class="filter-field">
           <mat-label>Department</mat-label>
           <mat-select formControlName="department">
             <mat-option>Cualquiera</mat-option>
@@ -42,7 +42,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="filter-field" fxFlex>
+        <mat-form-field class="filter-field">
           <mat-label>Tipo</mat-label>
           <mat-select formControlName="type">
             <mat-option>Cualquiera</mat-option>
@@ -52,7 +52,7 @@
           </mat-select>
         </mat-form-field>
         <mat-slide-toggle formControlName="isDown">Descontinuados</mat-slide-toggle>
-        <mat-form-field class="filter-field" fxFlex>
+        <mat-form-field class="filter-field">
           <mat-label>Creados desde</mat-label>
           <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -61,11 +61,22 @@
         <button
           mat-raised-button
           color="accent"
-          class="submitSearch"
+          class="applyFilters"
           [disabled]="!projectFilterForm.valid"
           aria-label="check"
+          type="submit"
         >
           <mat-icon>check</mat-icon>Aplicar
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          class="resetFilters"
+          [disabled]="!projectFilterForm.dirty"
+          aria-label="limpiar"
+          type="reset"
+        >
+          <mat-icon>cancel</mat-icon>Limpiar
         </button>
       </div>
     </mat-drawer>
