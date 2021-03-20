@@ -19,7 +19,7 @@
     </button>
   </div>
   <mat-drawer-container>
-    <mat-drawer mode="side" opened position="end">
+    <mat-drawer [mode]="isMobile ? 'over' : 'side'" opened position="end">
       <div class="filters">
         <mat-form-field class="filter-field" fxFlex>
           <mat-label>University</mat-label>

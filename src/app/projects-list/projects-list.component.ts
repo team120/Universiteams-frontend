@@ -9,6 +9,7 @@ import { UniversitiesService } from "../universities.service";
 import { ProjectDetailComponent } from "../project-detail/project-detail.component";
 import { projectTypesList } from "../model/project/project-type";
 import { MatDrawer } from "@angular/material/sidenav";
+import { DeviceDetectorService } from "../device-detector.service";
 
 @Component({
   selector: "app-projects-list",
@@ -19,6 +20,7 @@ export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
   universities: University[] = [];
   @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
+  isMobile = false;
 
   projectFilterForm = new FormGroup({
     generalSearch: new FormControl(""),
@@ -59,8 +61,13 @@ export class ProjectsListComponent implements OnInit {
   constructor(
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
-    private detailView: MatDialog
-  ) {}
+    private detailView: MatDialog,
+    deviceDetectorService: DeviceDetectorService
+  ) {
+    deviceDetectorService.isMobile().subscribe((result) => {
+      this.isMobile = result.matches;
+    });
+  }
 
   ngOnInit(): void {
     this.projectsService.getProjects().subscribe((projects) => {

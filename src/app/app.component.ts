@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatSidenav } from "@angular/material/sidenav";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import { DeviceDetectorService } from "./device-detector.service";
 
 @Component({
   selector: "app-root",
@@ -13,16 +13,16 @@ export class AppComponent implements OnInit {
   showHeader = false;
   showSidenav = false;
   showFooter = false;
-  isMobile = false
+  isMobile = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, breakpointObserver: BreakpointObserver) {
-    breakpointObserver.observe([
-      Breakpoints.Handset
-    ]).subscribe(result => {
-      if (result.matches){
-        this.isMobile = true
-      }
-    })
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    deviceDetectorService: DeviceDetectorService
+  ) {
+    deviceDetectorService.isMobile().subscribe((result) => {
+      this.isMobile = result.matches;
+    });
   }
 
   ngOnInit(): void {
