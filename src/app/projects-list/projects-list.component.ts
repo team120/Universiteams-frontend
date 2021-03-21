@@ -10,6 +10,7 @@ import { ProjectDetailComponent } from "../project-detail/project-detail.compone
 import { projectTypesList } from "../model/project/project-type";
 import { MatDrawer } from "@angular/material/sidenav";
 import { DeviceDetectorService } from "../device-detector.service";
+import { SortAttribute } from "../model/general/general.model";
 
 @Component({
   selector: "app-projects-list",
@@ -19,8 +20,9 @@ import { DeviceDetectorService } from "../device-detector.service";
 export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
   universities: University[] = [];
-  @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
   isMobile = false;
+  sortAttributes: SortAttribute[];
+  @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
 
   projectFilterForm = new FormGroup({
     generalSearch: new FormControl(""),
@@ -29,6 +31,7 @@ export class ProjectsListComponent implements OnInit {
     type: new FormControl(""),
     isDown: new FormControl(""),
     dateFrom: new FormControl(""),
+    sortBy: new FormControl(""),
   });
 
   get generalSearch() {
@@ -50,6 +53,10 @@ export class ProjectsListComponent implements OnInit {
     return this.projectFilterForm.get("dateFrom");
   }
 
+  get sortBy() {
+    return this.projectFilterForm.get("sortBy");
+  }
+
   get selectedUniversity() {
     return this.universities.find((university) => university.id === this.university?.value);
   }
@@ -67,6 +74,7 @@ export class ProjectsListComponent implements OnInit {
     deviceDetectorService.isMobile().subscribe((result) => {
       this.isMobile = result.matches;
     });
+    this.sortAttributes = projectsService.getSortAttributes();
   }
 
   ngOnInit(): void {
@@ -99,6 +107,7 @@ export class ProjectsListComponent implements OnInit {
         type: this.type?.value,
         isDown: this.isDown?.value,
         dateFrom: this.dateFrom?.value,
+        sortBy: this.sortBy?.value,
       })
       .subscribe((projects) => {
         this.projects = projects;
