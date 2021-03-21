@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { SortAttribute } from "./model/general/general.model";
 import { Project } from "./model/project/project";
 
 @Injectable({
@@ -8,6 +9,11 @@ import { Project } from "./model/project/project";
 })
 export class ProjectsService {
   private readonly baseUrl = "http://localhost:3000";
+  sortAttributesList: SortAttribute[] = [
+    { displayName: "Nombre", attribute: "name" },
+    { displayName: "Tipo", attribute: "type" },
+    { displayName: "Fecha Creacion", attribute: "creationDate" },
+  ];
 
   constructor(private httpClient: HttpClient) {}
 
@@ -18,6 +24,7 @@ export class ProjectsService {
     type?: string;
     dateFrom?: Date;
     isDown?: boolean;
+    sortBy?: string;
   }): Observable<Project[]> {
     const url = `${this.baseUrl}/projects`
       .concat(params ? "?" : "")
@@ -26,9 +33,14 @@ export class ProjectsService {
       .concat(params?.departmentId ? `departmentId=${params.departmentId}&` : "")
       .concat(params?.type ? `type=${params.type}&` : "")
       .concat(params?.dateFrom ? `dateFrom=${params.dateFrom}&` : "")
-      .concat(params?.isDown ? `isDown=${params.isDown}&` : "");
+      .concat(params?.isDown ? `isDown=${params.isDown}&` : "")
+      .concat(params?.sortBy ? `sortBy=${params.sortBy}&` : "");
 
     console.log(url);
     return this.httpClient.get<Project[]>(url);
+  }
+
+  getSortAttributes() {
+    return this.sortAttributesList;
   }
 }
