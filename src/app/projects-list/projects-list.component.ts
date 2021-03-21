@@ -22,6 +22,7 @@ export class ProjectsListComponent implements OnInit {
   universities: University[] = [];
   isMobile = false;
   sortAttributes: SortAttribute[];
+  inAscendingOrder: boolean = true;
   @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
 
   projectFilterForm = new FormGroup({
@@ -98,6 +99,10 @@ export class ProjectsListComponent implements OnInit {
     });
   }
 
+  toggleOrder() {
+    this.inAscendingOrder = !this.inAscendingOrder;
+  }
+
   onSubmit() {
     this.projectsService
       .getProjects({
@@ -108,6 +113,7 @@ export class ProjectsListComponent implements OnInit {
         isDown: this.isDown?.value,
         dateFrom: this.dateFrom?.value,
         sortBy: this.sortBy?.value,
+        inAscendingOrder: this.inAscendingOrder,
       })
       .subscribe((projects) => {
         this.projects = projects;
