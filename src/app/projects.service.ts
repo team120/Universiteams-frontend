@@ -12,7 +12,7 @@ export class ProjectsService {
   sortAttributesList: SortAttribute[] = [
     { displayName: "Nombre", attribute: "name" },
     { displayName: "Tipo", attribute: "type" },
-    { displayName: "Fecha Creacion", attribute: "creationDate" },
+    { displayName: "Fecha Creación", attribute: "creationDate" },
   ];
 
   constructor(private httpClient: HttpClient) {}

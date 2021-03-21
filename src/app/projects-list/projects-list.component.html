@@ -19,7 +19,7 @@
     </button>
   </div>
   <mat-drawer-container>
-    <mat-drawer [mode]="isMobile ? 'over' : 'side'" opened position="end">
+    <mat-drawer [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile" position="end">
       <div class="filters">
         <mat-form-field>
           <mat-label>Ordenar Por</mat-label>
@@ -32,7 +32,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>University</mat-label>
+          <mat-label>Universidad</mat-label>
           <mat-select formControlName="university">
             <mat-option>Cualquiera</mat-option>
             <mat-option *ngFor="let university of universities" [value]="university.id">
@@ -41,7 +41,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Department</mat-label>
+          <mat-label>Departamento</mat-label>
           <mat-select formControlName="department">
             <mat-option>Cualquiera</mat-option>
             <mat-option
