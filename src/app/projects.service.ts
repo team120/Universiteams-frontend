@@ -25,6 +25,7 @@ export class ProjectsService {
     dateFrom?: Date;
     isDown?: boolean;
     sortBy?: string;
+    inAscendingOrder?: boolean;
   }): Observable<Project[]> {
     const url = `${this.baseUrl}/projects`
       .concat(params ? "?" : "")
@@ -34,7 +35,11 @@ export class ProjectsService {
       .concat(params?.type ? `type=${params.type}&` : "")
       .concat(params?.dateFrom ? `dateFrom=${params.dateFrom}&` : "")
       .concat(params?.isDown ? `isDown=${params.isDown}&` : "")
-      .concat(params?.sortBy ? `sortBy=${params.sortBy}&` : "");
+      .concat(
+        params?.sortBy
+          ? `sortBy=${params.sortBy}&inAscendingOrder=${params?.inAscendingOrder ?? true}&`
+          : ""
+      );
 
     console.log(url);
     return this.httpClient.get<Project[]>(url);
