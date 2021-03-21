@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   @ViewChild(MatSidenav) sidenav: MatSidenav | undefined;
   showHeader = false;
   showSidenav = false;
-  showFooter = false;
   isMobile = false;
 
   constructor(
@@ -30,7 +29,6 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.showHeader = this.activatedRoute.firstChild?.snapshot.data.showHeader !== false;
         this.showSidenav = this.activatedRoute.firstChild?.snapshot.data.showNavbar !== false;
-        this.showFooter = this.activatedRoute.firstChild?.snapshot.data.showFooter !== false;
       }
     });
   }

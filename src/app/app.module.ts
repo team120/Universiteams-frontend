@@ -10,7 +10,6 @@ import { AppComponent } from "./app.component";
 import { UsersComponent } from "./users/users.component";
 import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { FooterComponent } from "./layout/footer/footer.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
@@ -44,7 +43,6 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
     LoginComponent,
     DashboardComponent,
     AccountSettingsComponent,
-    FooterComponent,
     HeaderComponent,
     SidenavBodyComponent,
     ProjectsListComponent,
