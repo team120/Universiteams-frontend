@@ -2,16 +2,13 @@
   <div class="search-header">
     <mat-form-field class="search-bar">
       <mat-label>Buscar proyectos</mat-label>
-      <input
-        matInput
-        placeholder="Por nombre de proyecto o por usuario"
-        formControlName="generalSearch"
-      />
+      <input matInput placeholder="Por nombre de proyecto o por usuario" formControlName="generalSearch"/>
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-    <button mat-button type="submit" [disabled]="!projectFilterForm.valid" aria-label="check">
+    <button mat-raised-button class="submitSearch" [disabled]="!projectFilterForm.valid" aria-label="check">
       <mat-icon>check</mat-icon>
     </button>
-    <button mat-button type="menu" (click)="openFilterMenu()">
+    <button mat-raised-button class="filterButton" type="menu" (click)="openFilterMenu()">
       <mat-icon>filter_list</mat-icon>
     </button>
   </div>
@@ -31,10 +28,13 @@
 </form>
 
 <div *ngFor="let project of projects" class="project-container">
-  <mat-card>
+  <mat-card (click)="openDetails(project)"> <!-- We need the ID if we don't want to pass the entire project -->
     <mat-card-header matLine>
       <mat-card-title matLine>{{ project.name }}</mat-card-title>
-      <mat-card-subtitle matLine>Marcos Juárez</mat-card-subtitle>
+      <mat-card-subtitle matLine>
+        {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} | {{ project.department==undefined ? "Independiente" : project.department.name }}
+      </mat-card-subtitle>
+
     </mat-card-header>
     <mat-card-content>
       <mat-chip-list matLine>
@@ -49,9 +49,6 @@
         <mat-chip class="topic-tag">Investigación</mat-chip>
         <mat-chip class="topic-tag">Tecnología</mat-chip>
         <mat-chip class="topic-tag">Python</mat-chip>
-        <!--<mat-chip class="user-tag" *ngFor="let user of project.users">
-          {{ user.name }}
-        </mat-chip>-->
       </mat-chip-list>
     </mat-card-content>
   </mat-card>

@@ -1,0 +1,45 @@
+<mat-dialog-content>
+  <h2>{{ project.name }}</h2>
+  <mat-divider></mat-divider>
+
+  <div class="info">
+    <h3>Información</h3>    
+    <p>Universidad: {{ project.department?.university?.name}}</p>
+    <p>Departamento: {{ project.department==undefined ? "Independiente" : project.department.name }}</p>
+    <p>Projecto: {{ project.type }}</p>
+    <p>Fecha Comienzo: {{ project.creationDate?.toString()?.substr(0, 10) }}</p>
+  </div>
+ <mat-divider></mat-divider>
+
+  <div class="users">
+    <h3>Participantes del proyecto</h3>
+    <mat-chip-list matLine *ngIf="project.users !== undefined" class="user-tag">
+      <mat-chip *ngFor="let user of project.users" class="user-tag">
+        {{user.name}} {{user.lastName}}
+      </mat-chip>
+    </mat-chip-list>
+    <mat-chip-list matLine *ngElse>
+      <mat-chip class="user-tag">
+        No hay participantes en este proyecto
+      </mat-chip>
+    </mat-chip-list>
+  </div>    
+  <mat-divider></mat-divider>
+
+  <div class="topics">
+    <h3>Tópicos</h3>
+    <mat-chip-list matLine> <!-- make a mat-chip *ngFor when the entity "topic" exists -->
+      <mat-chip class="topic-tag">Investigación</mat-chip>
+      <mat-chip class="topic-tag">Tecnología</mat-chip>
+      <mat-chip class="topic-tag">Python</mat-chip>
+    </mat-chip-list>
+  </div>
+  <mat-divider></mat-divider>
+  <!-- Última Publicación, o un link a la misma -->
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button mat-dialog-close>Cerrar</button>
+  <button mat-raised-button mat-dialog-close color="primary">Inscribirse</button>
+  <!-- Hacer funcionar boton de inscripción -->
+</mat-dialog-actions>

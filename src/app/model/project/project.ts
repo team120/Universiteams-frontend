@@ -1,4 +1,5 @@
 import { User } from "../user/user";
+import { Department } from "../department/department";
 
 export enum ProjectType {
   Informal = 1,
@@ -10,4 +11,7 @@ export class Project {
   type?: ProjectType;
   isDown?: boolean;
   users?: User[];
+  department?: Department;
+  creationDate?: Date;
+  // Leader, roles, topics, lastPublication...
 }

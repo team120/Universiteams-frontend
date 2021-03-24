@@ -25,6 +25,11 @@ search-filters {
   display: flex;
 }
 
+.submitSearch, .filterButton {
+  margin-left: 0.5rem;
+  height: 50%;
+}
+
 ::ng-deep .mat-card-header-text {
   margin-left: 0.5rem !important;
   margin-right: 0.5rem !important;

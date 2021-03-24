@@ -1,10 +1,12 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Project } from "../model/project/project";
 import { University } from "../model/university/university";
 import { ProjectsService } from "../projects.service";
 import { UniversitiesService } from "../universities.service";
+import { ProjectDetailComponent } from "../project-detail/project-detail.component";
 
 @Component({
   selector: "app-projects-list",
@@ -63,7 +65,8 @@ export class ProjectsListComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private universitiesService: UniversitiesService
+    private universitiesService: UniversitiesService,
+    private detailView: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -77,6 +80,13 @@ export class ProjectsListComponent implements OnInit {
 
   openFilterMenu() {
     this.isFilterMenuOpen = this.isFilterMenuOpen ? false : true;
+  }
+
+  openDetails(project: Project) { // We need the ID if we don't want to pass the entire project
+    const detailRef = this.detailView.open(ProjectDetailComponent, {data: project});
+    detailRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`); // Just Testing
+    });
   }
 
   onSubmit() {
