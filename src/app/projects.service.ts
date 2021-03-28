@@ -45,6 +45,11 @@ export class ProjectsService {
     return this.httpClient.get<Project[]>(url);
   }
 
+  getOneProject(id: number) {
+    const url = `${this.baseUrl}/projects/${id}`;
+    return this.httpClient.get<Project>(url);
+  }
+
   getSortAttributes() {
     return this.sortAttributesList;
   }
