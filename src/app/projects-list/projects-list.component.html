@@ -112,7 +112,7 @@
     <mat-drawer-content>
       <div class="projects-container">
         <div *ngFor="let project of projects" class="project">
-          <mat-card (click)="openDetails(project)">
+          <mat-card (click)="openDetails(project.id)">
             <!-- We need the ID if we don't want to pass the entire project -->
             <mat-card-header matLine>
               <mat-card-title matLine>{{ project.name }}</mat-card-title>

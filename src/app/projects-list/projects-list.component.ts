@@ -11,6 +11,7 @@ import { projectTypesList } from "../model/project/project-type";
 import { MatDrawer } from "@angular/material/sidenav";
 import { DeviceDetectorService } from "../device-detector.service";
 import { SortAttribute } from "../model/general/general.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-projects-list",
@@ -69,7 +70,7 @@ export class ProjectsListComponent implements OnInit {
   constructor(
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
-    private detailView: MatDialog,
+    private router: Router,
     deviceDetectorService: DeviceDetectorService
   ) {
     deviceDetectorService.isMobile().subscribe((result) => {
@@ -91,12 +92,8 @@ export class ProjectsListComponent implements OnInit {
     this.filterDrawer?.toggle();
   }
 
-  openDetails(project: Project) {
-    // We need the ID if we don't want to pass the entire project
-    const detailRef = this.detailView.open(ProjectDetailComponent, { data: project });
-    detailRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`); // Just Testing
-    });
+  openDetails(projectId?: number) {
+    projectId && this.router.navigate([`projects/${projectId}`]);
   }
 
   toggleOrder() {

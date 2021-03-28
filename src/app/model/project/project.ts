@@ -3,6 +3,7 @@ import { Department } from "../department/department";
 import { ProjectTypeEnum } from "./project-type";
 
 export class Project {
+  id?: number;
   name?: string;
   type?: ProjectTypeEnum;
   isDown?: boolean;
