@@ -18,6 +18,9 @@ const routes: Routes = [
   {
     path: "projects",
     component: ProjectsListComponent,
+    data: {
+      reuse: true,
+    },
   },
   {
     path: "dashboard",
