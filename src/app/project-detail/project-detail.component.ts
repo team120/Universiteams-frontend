@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Project } from "../model/project/project";
 import { ProjectsService } from "../projects.service";
@@ -11,6 +11,7 @@ import { ProjectsService } from "../projects.service";
 export class ProjectDetailComponent implements OnInit {
   project: Project | undefined;
   @Input() projectIdInput?: number;
+  @Output() close = new EventEmitter();
 
   constructor(
     private projectsService: ProjectsService,
@@ -18,13 +19,14 @@ export class ProjectDetailComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    !this.projectIdInput && this.route.paramMap.subscribe((params) => {
-      const id = Number(params.get("id"));
-      if (id !== null)
-        this.projectsService.getOneProject(id).subscribe((project) => {
-          this.project = project;
-        });
-    });
+    !this.projectIdInput &&
+      this.route.paramMap.subscribe((params) => {
+        const id = Number(params.get("id"));
+        if (id !== null)
+          this.projectsService.getOneProject(id).subscribe((project) => {
+            this.project = project;
+          });
+      });
 
     console.log(this.projectIdInput);
     this.projectIdInput &&
@@ -34,6 +36,6 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   goBackToProjects() {
-    this.router.navigate(["projects"]);
+    this.close.emit();
   }
 }

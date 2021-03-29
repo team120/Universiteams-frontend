@@ -100,6 +100,10 @@ export class ProjectsListComponent implements OnInit {
     }
   }
 
+  closeDetails() {
+    this.detailProjectId = undefined;
+  }
+
   toggleOrder() {
     this.inAscendingOrder = !this.inAscendingOrder;
   }

@@ -151,5 +151,5 @@
   </form>
 </div>
 <div class="project-detail" *ngIf="detailProjectId !== undefined">
-  <app-project-detail [projectIdInput]="detailProjectId"></app-project-detail>
+  <app-project-detail [projectIdInput]="detailProjectId" (close)="closeDetails()"></app-project-detail>
 </div>
