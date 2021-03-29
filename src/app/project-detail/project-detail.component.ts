@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Project } from "../model/project/project";
 import { ProjectsService } from "../projects.service";
@@ -9,24 +9,26 @@ import { UniversitiesService } from "../universities.service";
   templateUrl: "./project-detail.component.html",
   styleUrls: ["./project-detail.component.scss"],
 })
-export class ProjectDetailComponent {
+export class ProjectDetailComponent implements OnInit {
   project: Project | undefined;
 
   constructor(
     private projectsService: ProjectsService,
-    route: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router
-  ) {
-    route.paramMap.subscribe((params) => {
+  ) {}
+  ngOnInit(): void {
+    console.log("detail on init called")
+    this.route.paramMap.subscribe((params) => {
       const id = Number(params.get("id"));
       if (id !== null)
-        projectsService.getOneProject(id).subscribe((project) => {
+        this.projectsService.getOneProject(id).subscribe((project) => {
           this.project = project;
         });
     });
   }
 
-  goBackToProjects(){
-    this.router.navigate(["projects"])
+  goBackToProjects() {
+    this.router.navigate(["projects"]);
   }
 }
