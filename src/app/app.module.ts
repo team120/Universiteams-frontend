@@ -35,6 +35,8 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { ProjectDetailComponent } from "./project-detail/project-detail.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { RouteReuseStrategy } from "@angular/router";
+import { RouteReuseService } from "./route-reuse.service";
 
 @NgModule({
   declarations: [
@@ -81,6 +83,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
       useValue: {},
     },
     { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: RouteReuseStrategy, useClass: RouteReuseService },
   ],
   bootstrap: [AppComponent],
 })
