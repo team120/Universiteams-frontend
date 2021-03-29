@@ -24,6 +24,7 @@ export class ProjectsListComponent implements OnInit {
   isMobile = false;
   sortAttributes: SortAttribute[];
   inAscendingOrder: boolean = true;
+  detailProjectId: number | undefined = undefined;
   @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
 
   projectFilterForm = new FormGroup({
@@ -93,7 +94,10 @@ export class ProjectsListComponent implements OnInit {
   }
 
   openDetails(projectId?: number) {
-    projectId && this.router.navigate([`projects/${projectId}`]);
+    console.log(projectId);
+    if (projectId !== undefined) {
+      this.detailProjectId = projectId;
+    }
   }
 
   toggleOrder() {

@@ -1,150 +1,155 @@
-<form
-  class="search-area"
-  [formGroup]="projectFilterForm"
-  class="little-side-marg"
-  (ngSubmit)="onSubmit()"
->
-  <div class="search-header">
-    <mat-form-field class="search-bar">
-      <mat-label>Buscar proyectos</mat-label>
-      <input
-        matInput
-        placeholder="Por nombre de proyecto o por usuario"
-        formControlName="generalSearch"
-      />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-    <button mat-button class="toggleFilterMenu" type="menu" (click)="openFilterMenu()">
-      <mat-icon>filter_list</mat-icon>
-    </button>
-  </div>
-  <mat-drawer-container>
-    <mat-drawer [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile" position="end">
-      <div class="filters">
-        <div class="sortFields">
-          <mat-form-field class="sortByField">
-            <mat-label>Ordenar Por</mat-label>
-            <mat-select formControlName="sortBy">
-              <mat-option
-                *ngFor="let sortAttribute of sortAttributes"
-                [value]="sortAttribute.attribute"
-                >{{ sortAttribute.displayName }}
+<div class="projects-list" *ngIf="detailProjectId === undefined">
+  <form
+    class="search-area"
+    [formGroup]="projectFilterForm"
+    class="little-side-marg"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="search-header">
+      <mat-form-field class="search-bar">
+        <mat-label>Buscar proyectos</mat-label>
+        <input
+          matInput
+          placeholder="Por nombre de proyecto o por usuario"
+          formControlName="generalSearch"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <button mat-button class="toggleFilterMenu" type="menu" (click)="openFilterMenu()">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
+    <mat-drawer-container>
+      <mat-drawer [mode]="isMobile ? 'over' : 'side'" [opened]="!isMobile" position="end">
+        <div class="filters">
+          <div class="sortFields">
+            <mat-form-field class="sortByField">
+              <mat-label>Ordenar Por</mat-label>
+              <mat-select formControlName="sortBy">
+                <mat-option
+                  *ngFor="let sortAttribute of sortAttributes"
+                  [value]="sortAttribute.attribute"
+                  >{{ sortAttribute.displayName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button
+              mat-button
+              (click)="toggleOrder()"
+              aria-label="ordenar en forma"
+              type="button"
+            >
+              <mat-icon class="inOrderField">{{
+                inAscendingOrder ? "arrow_upward" : "arrow_downward"
+              }}</mat-icon>
+            </button>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Universidad</mat-label>
+            <mat-select formControlName="university">
+              <mat-option>Cualquiera</mat-option>
+              <mat-option *ngFor="let university of universities" [value]="university.id">
+                {{ university.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Departamento</mat-label>
+            <mat-select formControlName="department">
+              <mat-option>Cualquiera</mat-option>
+              <mat-option
+                *ngFor="let department of selectedUniversity?.departments"
+                [value]="department.id"
+              >
+                {{ department.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="type">
+              <mat-option>Cualquiera</mat-option>
+              <mat-option *ngFor="let type of projectTypes" [value]="type">{{
+                type
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-slide-toggle formControlName="isDown">Descontinuados</mat-slide-toggle>
+
+          <mat-form-field>
+            <mat-label>Creados desde</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+          </mat-form-field>
+
           <button
-            mat-button
-            (click)="toggleOrder()"
-            aria-label="ordenar en forma"
-            type="button"
+            mat-raised-button
+            color="accent"
+            class="applyFilters"
+            [disabled]="!projectFilterForm.valid"
+            aria-label="check"
+            type="submit"
           >
-            <mat-icon class="inOrderField">{{
-              inAscendingOrder ? "arrow_upward" : "arrow_downward"
-            }}</mat-icon>
+            <mat-icon>check</mat-icon>Aplicar
+          </button>
+
+          <button
+            mat-raised-button
+            color="warn"
+            class="resetFilters"
+            [disabled]="!projectFilterForm.dirty"
+            aria-label="limpiar"
+            type="reset"
+          >
+            <mat-icon>cancel</mat-icon>Limpiar
           </button>
         </div>
-
-        <mat-form-field>
-          <mat-label>Universidad</mat-label>
-          <mat-select formControlName="university">
-            <mat-option>Cualquiera</mat-option>
-            <mat-option *ngFor="let university of universities" [value]="university.id">
-              {{ university.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Departamento</mat-label>
-          <mat-select formControlName="department">
-            <mat-option>Cualquiera</mat-option>
-            <mat-option
-              *ngFor="let department of selectedUniversity?.departments"
-              [value]="department.id"
-            >
-              {{ department.name }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Tipo</mat-label>
-          <mat-select formControlName="type">
-            <mat-option>Cualquiera</mat-option>
-            <mat-option *ngFor="let type of projectTypes" [value]="type">{{
-              type
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-slide-toggle formControlName="isDown">Descontinuados</mat-slide-toggle>
-
-        <mat-form-field>
-          <mat-label>Creados desde</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="dateFrom" />
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker startView="multi-year"></mat-datepicker>
-        </mat-form-field>
-
-        <button
-          mat-raised-button
-          color="accent"
-          class="applyFilters"
-          [disabled]="!projectFilterForm.valid"
-          aria-label="check"
-          type="submit"
-        >
-          <mat-icon>check</mat-icon>Aplicar
-        </button>
-
-        <button
-          mat-raised-button
-          color="warn"
-          class="resetFilters"
-          [disabled]="!projectFilterForm.dirty"
-          aria-label="limpiar"
-          type="reset"
-        >
-          <mat-icon>cancel</mat-icon>Limpiar
-        </button>
-      </div>
-    </mat-drawer>
-    <mat-drawer-content>
-      <div class="projects-container">
-        <div *ngFor="let project of projects" class="project">
-          <mat-card (click)="openDetails(project.id)">
-            <!-- We need the ID if we don't want to pass the entire project -->
-            <mat-card-header matLine>
-              <mat-card-title matLine>{{ project.name }}</mat-card-title>
-              <mat-card-subtitle matLine>
-                {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} |
-                {{
-                  project.department == undefined ? "Independiente" : project.department.name
-                }}
-              </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <mat-chip-list matLine>
-                <mat-chip *ngIf="project.users !== undefined" class="user-tag">
-                  {{ project.users[0].name }} {{ project.users[0].lastName }}, +{{
-                    project.users.length
+      </mat-drawer>
+      <mat-drawer-content>
+        <div class="projects-container">
+          <div *ngFor="let project of projects" class="project">
+            <mat-card (click)="openDetails(project.id)">
+              <!-- We need the ID if we don't want to pass the entire project -->
+              <mat-card-header matLine>
+                <mat-card-title matLine>{{ project.name }}</mat-card-title>
+                <mat-card-subtitle matLine>
+                  {{ project.type }} | {{ project.creationDate?.toString()?.substr(0, 10) }} |
+                  {{
+                    project.department == undefined ? "Independiente" : project.department.name
                   }}
-                  personas
-                </mat-chip>
-                <mat-chip *ngElse class="user-tag">
-                  No hay participantes en este proyecto
-                </mat-chip>
-              </mat-chip-list>
-              <mat-chip-list matLine>
-                <!-- make a mat-chip *ngFor when the entity "topic" exists -->
-                <mat-chip class="topic-tag">Investigación</mat-chip>
-                <mat-chip class="topic-tag">Tecnología</mat-chip>
-                <mat-chip class="topic-tag">Python</mat-chip>
-              </mat-chip-list>
-            </mat-card-content>
-          </mat-card>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-chip-list matLine>
+                  <mat-chip *ngIf="project.users !== undefined" class="user-tag">
+                    {{ project.users[0].name }} {{ project.users[0].lastName }}, +{{
+                      project.users.length
+                    }}
+                    personas
+                  </mat-chip>
+                  <mat-chip *ngElse class="user-tag">
+                    No hay participantes en este proyecto
+                  </mat-chip>
+                </mat-chip-list>
+                <mat-chip-list matLine>
+                  <!-- make a mat-chip *ngFor when the entity "topic" exists -->
+                  <mat-chip class="topic-tag">Investigación</mat-chip>
+                  <mat-chip class="topic-tag">Tecnología</mat-chip>
+                  <mat-chip class="topic-tag">Python</mat-chip>
+                </mat-chip-list>
+              </mat-card-content>
+            </mat-card>
+          </div>
         </div>
-      </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
-</form>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </form>
+</div>
+<div class="project-detail" *ngIf="detailProjectId !== undefined">
+  <app-project-detail [projectIdInput]="detailProjectId"></app-project-detail>
+</div>
