@@ -1,32 +1,39 @@
-import { Component } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Project } from "../model/project/project";
 import { ProjectsService } from "../projects.service";
-import { UniversitiesService } from "../universities.service";
 
 @Component({
   selector: "app-project-detail",
   templateUrl: "./project-detail.component.html",
   styleUrls: ["./project-detail.component.scss"],
 })
-export class ProjectDetailComponent {
+export class ProjectDetailComponent implements OnInit {
   project: Project | undefined;
+  @Input() projectIdInput?: number;
 
   constructor(
     private projectsService: ProjectsService,
-    route: ActivatedRoute,
+    private route: ActivatedRoute,
     private router: Router
-  ) {
-    route.paramMap.subscribe((params) => {
+  ) {}
+  ngOnInit(): void {
+    !this.projectIdInput && this.route.paramMap.subscribe((params) => {
       const id = Number(params.get("id"));
       if (id !== null)
-        projectsService.getOneProject(id).subscribe((project) => {
+        this.projectsService.getOneProject(id).subscribe((project) => {
           this.project = project;
         });
     });
+
+    console.log(this.projectIdInput);
+    this.projectIdInput &&
+      this.projectsService.getOneProject(this.projectIdInput).subscribe((project) => {
+        this.project = project;
+      });
   }
 
-  goBackToProjects(){
-    this.router.navigate(["projects"])
+  goBackToProjects() {
+    this.router.navigate(["projects"]);
   }
 }
