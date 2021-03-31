@@ -22,7 +22,7 @@ export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
   universities: University[] = [];
   isMobile = false;
-  sortAttributes: SortAttribute[];
+  sortAttributes: SortAttribute[] = [];
   inAscendingOrder: boolean = true;
   @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
 
@@ -71,15 +71,14 @@ export class ProjectsListComponent implements OnInit {
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
     private router: Router,
-    deviceDetectorService: DeviceDetectorService
-  ) {
-    deviceDetectorService.isMobile().subscribe((result) => {
-      this.isMobile = result.matches;
-    });
-    this.sortAttributes = projectsService.getSortAttributes();
-  }
+    private deviceDetectorService: DeviceDetectorService
+  ) {}
 
   ngOnInit(): void {
+    this.deviceDetectorService.isMobile().subscribe((result) => {
+      this.isMobile = result.matches;
+    });
+    this.sortAttributes = this.projectsService.getSortAttributes();
     this.projectsService.getProjects().subscribe((projects) => {
       this.projects = projects;
     });
