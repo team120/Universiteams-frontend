@@ -1,17 +1,8 @@
-<form
-  class="search-area"
-  [formGroup]="projectFilterForm"
-  class="little-side-marg"
-  (ngSubmit)="onSubmit()"
->
+<form class="search-area" [formGroup]="projectFilterForm" class="little-side-marg" (ngSubmit)="onSubmit()">
   <div class="search-header">
     <mat-form-field class="search-bar">
       <mat-label>Buscar proyectos</mat-label>
-      <input
-        matInput
-        placeholder="Por nombre de proyecto o por usuario"
-        formControlName="generalSearch"
-      />
+      <input matInput placeholder="Por nombre de proyecto o por usuario" formControlName="generalSearch" />
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
     <button mat-button class="toggleFilterMenu" type="menu" (click)="openFilterMenu()">
@@ -25,19 +16,12 @@
           <mat-form-field class="sortByField">
             <mat-label>Ordenar Por</mat-label>
             <mat-select formControlName="sortBy">
-              <mat-option
-                *ngFor="let sortAttribute of sortAttributes"
-                [value]="sortAttribute.attribute"
-                >{{ sortAttribute.displayName }}
+              <mat-option *ngFor="let sortAttribute of sortAttributes" [value]="sortAttribute.attribute">
+                {{ sortAttribute.displayName }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <button
-            mat-button
-            (click)="toggleOrder()"
-            aria-label="ordenar en forma"
-            type="button"
-          >
+          <button mat-button (click)="toggleOrder()" aria-label="ordenar en forma" type="button">
             <mat-icon class="inOrderField">{{
               inAscendingOrder ? "arrow_upward" : "arrow_downward"
             }}</mat-icon>
@@ -45,9 +29,9 @@
         </div>
 
         <mat-form-field>
-          <mat-label>Universidad</mat-label>
+          <mat-label>Universidad: Todas</mat-label>
           <mat-select formControlName="university">
-            <mat-option>Cualquiera</mat-option>
+            <mat-option>Todas</mat-option>
             <mat-option *ngFor="let university of universities" [value]="university.id">
               {{ university.name }}
             </mat-option>
@@ -55,22 +39,19 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Departamento</mat-label>
+          <mat-label>Departamento: Todas</mat-label>
           <mat-select formControlName="department">
-            <mat-option>Cualquiera</mat-option>
-            <mat-option
-              *ngFor="let department of selectedUniversity?.departments"
-              [value]="department.id"
-            >
+            <mat-option>Todas</mat-option>
+            <mat-option *ngFor="let department of selectedUniversity?.departments" [value]="department.id">
               {{ department.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Tipo</mat-label>
+          <mat-label>Tipo: Todos</mat-label>
           <mat-select formControlName="type">
-            <mat-option>Cualquiera</mat-option>
+            <mat-option>Todos</mat-option>
             <mat-option *ngFor="let type of projectTypes" [value]="type">{{
               type
             }}</mat-option>
@@ -86,26 +67,14 @@
           <mat-datepicker #picker startView="multi-year"></mat-datepicker>
         </mat-form-field>
 
-        <button
-          mat-raised-button
-          color="accent"
-          class="applyFilters"
-          [disabled]="!projectFilterForm.valid"
-          aria-label="check"
-          type="submit"
-        >
+        <button mat-raised-button color="accent" class="applyFilters" [disabled]="!projectFilterForm.valid"
+          aria-label="check" type="submit">
           <mat-icon>check</mat-icon>Aplicar
         </button>
 
-        <button
-          mat-raised-button
-          color="warn"
-          class="resetFilters"
-          [disabled]="!projectFilterForm.dirty"
-          aria-label="limpiar"
-          type="reset"
-        >
-          <mat-icon>cancel</mat-icon>Limpiar
+        <button mat-raised-button color="warn" class="resetFilters" [disabled]="!projectFilterForm.dirty"
+          aria-label="limpiar" type="reset">
+          <mat-icon>delete</mat-icon>Limpiar
         </button>
       </div>
     </mat-drawer>
