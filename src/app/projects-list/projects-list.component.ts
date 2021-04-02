@@ -99,6 +99,11 @@ export class ProjectsListComponent implements OnInit {
     this.inAscendingOrder = !this.inAscendingOrder;
   }
 
+  reset() {
+    this.projectFilterForm.reset();
+    this.inAscendingOrder = true;
+  }
+
   onSubmit() {
     this.projectsService
       .getProjects({

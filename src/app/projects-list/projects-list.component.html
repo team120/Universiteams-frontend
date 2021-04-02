@@ -73,7 +73,7 @@
         </button>
 
         <button mat-raised-button color="warn" class="resetFilters" [disabled]="!projectFilterForm.dirty"
-          aria-label="limpiar" type="reset">
+          aria-label="limpiar" type="reset" (click)="reset()">
           <mat-icon>delete</mat-icon>Limpiar
         </button>
       </div>
