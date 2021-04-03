@@ -13,29 +13,30 @@
 </div>
 
 <mat-table [dataSource]="users" matSort class="mat-elevation-z8 little-side-marg">
-    <ng-container matColumnDef="user">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.lastName}}, {{user.name}} <br> {{ user.mail }}
-      </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="requestActions">
-      <mat-header-cell *matHeaderCellDef>Solicita Cargo</mat-header-cell>
-      <mat-cell *matCellDef="let user" class="positionRequests">
-        <div *ngIf="user.requestPosition">
-          <button mat-button>
-            <mat-icon aria-hidden="false" aria-label="Revise">visibility</mat-icon>
-          </button>
-          <button mat-button>
-            <mat-icon aria-hidden="false" aria-label="Decline">delete</mat-icon>
-          </button>
-        </div>
-        <div *ngIf="!user.requestPosition">
-          NO
-        </div>
-      </mat-cell>
-    </ng-container>
-    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+  <ng-container matColumnDef="user">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
+    <mat-cell *matCellDef="let user"> {{user.lastName}}, {{user.name}} <br> {{ user.mail }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="requestActions">
+    <mat-header-cell *matHeaderCellDef>Solicita Cargo</mat-header-cell>
+    <mat-cell *matCellDef="let user" class="positionRequests">
+      <div *ngIf="user.requestPosition">
+        <button mat-button>
+          <mat-icon aria-hidden="false" aria-label="Revise">visibility</mat-icon>
+        </button>
+        <button mat-button>
+          <mat-icon aria-hidden="false" aria-label="Decline">delete</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="!user.requestPosition">
+        NO
+      </div>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8 little-side-marg"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons class="mat-elevation-z8 little-side-marg">
+</mat-paginator>

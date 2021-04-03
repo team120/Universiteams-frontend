@@ -1,21 +1,12 @@
 <mat-toolbar class="mat-upm-shade-3">
-  <button
-    id="toggleNavBtn"
-    mat-icon-button
-    aria-label="Toggle navigation sidebar button"
-    (click)="onClickToggleSidebarButton()"
-  >
+  <button id="toggleNavBtn" mat-icon-button aria-label="Toggle navigation sidebar button"
+    (click)="onClickToggleSidebarButton()">
     <mat-icon>menu</mat-icon>
   </button>
   <span>UPM</span>
   <span class="header-spacer"></span>
-  <button
-    id="settingsBtn"
-    mat-icon-button
-    aria-label="Open user's settings"
-    routerLink="/account-settings"
-    routerLinkActive="active"
-  >
+  <button id="settingsBtn" mat-icon-button aria-label="Open user's settings" routerLink="/account-settings"
+    routerLinkActive="active">
     <mat-icon>settings</mat-icon>
   </button>
 </mat-toolbar>
