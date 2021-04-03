@@ -4,13 +4,16 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { ReactiveFormsModule } from "@angular/forms";
+import { RouteReuseStrategy } from "@angular/router";
 
-import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { RouteReuseService } from "./route-reuse.service";
 import { UsersComponent } from "./users/users.component";
 import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeaderComponent } from "./layout/header/header.component";
+import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
 import { ProjectsListComponent } from "./projects-list/projects-list.component";
@@ -35,9 +38,6 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { ProjectDetailComponent } from "./project-detail/project-detail.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { ToolbarComponent } from './layout/toolbar/toolbar.component';
-import { RouteReuseStrategy } from "@angular/router";
-import { RouteReuseService } from "./route-reuse.service";
 
 @NgModule({
   declarations: [
