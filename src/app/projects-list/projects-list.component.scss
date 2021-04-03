@@ -1,5 +1,11 @@
-.projects-container {
+.projects-container-mobile {
   min-height: 75vh;
+}
+
+.projects-container-desktop {
+  min-height: 75vh;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .project {
@@ -51,9 +57,15 @@
   padding: 1.25rem;
 }
 
-.user-tag,
-.topic-tag {
-  margin-left: 0.5rem !important;
+.ng-star-inserted {
+  /**/
+  margin-left: 0rem !important;
+  margin-right: 0rem !important;
+
+  .user-tag,
+  .topic-tag {
+    margin-left: 0.5rem !important;
+  }
 }
 
 ::ng-deep .mat-card-header-text {

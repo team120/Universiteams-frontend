@@ -79,7 +79,7 @@
       </div>
     </mat-drawer>
     <mat-drawer-content>
-      <div class="projects-container">
+      <div [class]="isMobile ? 'projects-container-mobile' : 'projects-container-desktop'">
         <div *ngFor="let project of projects" class="project">
           <mat-card (click)="openDetails(project.id)">
             <!-- We need the ID if we don't want to pass the entire project -->
