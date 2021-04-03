@@ -3,6 +3,7 @@ import {
   DetachedRouteHandle,
   RouteReuseStrategy,
 } from "@angular/router";
+
 export class RouteReuseService extends RouteReuseStrategy {
   cachedRoutes = new Map<string, DetachedRouteHandle | null>();
   shouldDetach(route: ActivatedRouteSnapshot): boolean {

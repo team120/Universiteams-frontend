@@ -1,14 +1,6 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpClientModule } from "@angular/common/http";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { ReactiveFormsModule } from "@angular/forms";
-import { RouteReuseStrategy } from "@angular/router";
-
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { RouteReuseService } from "./route-reuse.service";
+import { RouteReuseService } from "./service/route-reuse/route-reuse.service"
 import { UsersComponent } from "./users/users.component";
 import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
@@ -17,6 +9,14 @@ import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
 import { ProjectsListComponent } from "./projects-list/projects-list.component";
+
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { ReactiveFormsModule } from "@angular/forms";
+import { RouteReuseStrategy } from "@angular/router";
 
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";

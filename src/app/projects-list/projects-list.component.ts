@@ -1,17 +1,19 @@
+import { Project } from "../model/project/project";
+import { University } from "../model/university/university";
+import { projectTypesList } from "../model/project/project-type";
+import { SortAttribute } from "../model/general/general.model";
+
+import { ProjectsService } from "../service/projects/projects.service";
+import { UniversitiesService } from "../service/universities/universities.service";
+import { DeviceDetectorService } from "../service/device-detector/device-detector.service";
+import { ProjectDetailComponent } from "../project-detail/project-detail.component";
+
+import { Router } from "@angular/router";
 import { animate, state, style, transition, trigger } from "@angular/animations";
 import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
-import { Project } from "../model/project/project";
-import { University } from "../model/university/university";
-import { ProjectsService } from "../projects.service";
-import { UniversitiesService } from "../universities.service";
-import { ProjectDetailComponent } from "../project-detail/project-detail.component";
-import { projectTypesList } from "../model/project/project-type";
 import { MatDrawer } from "@angular/material/sidenav";
-import { DeviceDetectorService } from "../device-detector.service";
-import { SortAttribute } from "../model/general/general.model";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-projects-list",
@@ -72,7 +74,7 @@ export class ProjectsListComponent implements OnInit {
     private universitiesService: UniversitiesService,
     private router: Router,
     private deviceDetectorService: DeviceDetectorService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.deviceDetectorService.isMobile().subscribe((result) => {

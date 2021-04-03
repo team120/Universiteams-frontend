@@ -1,5 +1,8 @@
+import { AuthService } from "./auth.service";
+import { LoginComponent } from "../../login/login.component"
+
+import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -7,9 +10,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from "@angular/router";
-import { Observable } from "rxjs";
-import { AuthService } from "./auth.service";
-import { LoginComponent } from "./login/login.component";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 
 @Injectable({
   providedIn: "root",

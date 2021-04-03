@@ -1,7 +1,8 @@
+import { DeviceDetectorService } from "./service/device-detector/device-detector.service";
+
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatSidenav } from "@angular/material/sidenav";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { DeviceDetectorService } from "./device-detector.service";
+import { MatSidenav } from "@angular/material/sidenav";
 
 @Component({
   selector: "app-root",
