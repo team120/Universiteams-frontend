@@ -50,6 +50,7 @@ import { RouteReuseService } from "./route-reuse.service";
     SidenavBodyComponent,
     ProjectsListComponent,
     ProjectDetailComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,21 +1,5 @@
 <mat-nav-list class="mat-upm-shade-2">
-  <button
-    id="toggleNavBtn"
-    mat-icon-button
-    aria-label="Toggle navigation sidebar button"
-    class="lit-marg-b"
-    (click)="onClickToggleSidebarButton()"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <mat-divider></mat-divider>
-
-  <mat-list-item
-    routerLink="/profile"
-    routerLinkActive="active"
-    class="mat-upm-shade-3"
-  >
+  <mat-list-item routerLink="/profile" routerLinkActive="active" class="mat-upm-shade-3">
     <div class="profile-image">
       <!-- Insert profile image instead of mat-icon -->
       <mat-icon matListIcon>account_circle</mat-icon>
