@@ -4,6 +4,7 @@ import { AccountSettingsComponent } from "./account-settings/account-settings.co
 import { AuthGuardService } from "./auth-guard.service";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoginComponent } from "./login/login.component";
+import { ProjectDetailComponent } from "./project-detail/project-detail.component";
 import { ProjectsListComponent } from "./projects-list/projects-list.component";
 import { UsersComponent } from "./users/users.component";
 
@@ -13,9 +14,13 @@ const routes: Routes = [
     component: UsersComponent,
     canActivate: [AuthGuardService],
   },
+  { path: "projects/:id", component: ProjectDetailComponent },
   {
     path: "projects",
     component: ProjectsListComponent,
+    data: {
+      reuse: true,
+    },
   },
   {
     path: "dashboard",

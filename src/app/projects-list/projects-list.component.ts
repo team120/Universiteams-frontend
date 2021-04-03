@@ -1,40 +1,31 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Project } from "../model/project/project";
 import { University } from "../model/university/university";
 import { ProjectsService } from "../projects.service";
 import { UniversitiesService } from "../universities.service";
 import { ProjectDetailComponent } from "../project-detail/project-detail.component";
+import { projectTypesList } from "../model/project/project-type";
+import { MatDrawer } from "@angular/material/sidenav";
+import { DeviceDetectorService } from "../device-detector.service";
+import { SortAttribute } from "../model/general/general.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-projects-list",
-  animations: [
-    trigger("openFilterMenu", [
-      state(
-        "closed",
-        style({
-          display: "none",
-        })
-      ),
-      state(
-        "open",
-        style({
-          display: "block",
-        })
-      ),
-      transition("closed => open", [animate("0.2s ease-in-out")]),
-      transition("open => closed", [animate("0.2s ease-in-out")]),
-    ]),
-  ],
   templateUrl: "./projects-list.component.html",
   styleUrls: ["./projects-list.component.scss"],
 })
 export class ProjectsListComponent implements OnInit {
   projects: Project[] = [];
-  isFilterMenuOpen = false;
   universities: University[] = [];
+  isMobile = false;
+  sortAttributes: SortAttribute[] = [];
+  inAscendingOrder: boolean = true;
+  @ViewChild(MatDrawer) filterDrawer?: MatDrawer;
+
   projectFilterForm = new FormGroup({
     generalSearch: new FormControl(""),
     university: new FormControl(""),
@@ -42,6 +33,7 @@ export class ProjectsListComponent implements OnInit {
     type: new FormControl(""),
     isDown: new FormControl(""),
     dateFrom: new FormControl(""),
+    sortBy: new FormControl(""),
   });
 
   get generalSearch() {
@@ -63,13 +55,30 @@ export class ProjectsListComponent implements OnInit {
     return this.projectFilterForm.get("dateFrom");
   }
 
+  get sortBy() {
+    return this.projectFilterForm.get("sortBy");
+  }
+
+  get selectedUniversity() {
+    return this.universities.find((university) => university.id === this.university?.value);
+  }
+
+  get projectTypes() {
+    return projectTypesList;
+  }
+
   constructor(
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
-    private detailView: MatDialog
+    private router: Router,
+    private deviceDetectorService: DeviceDetectorService
   ) {}
 
   ngOnInit(): void {
+    this.deviceDetectorService.isMobile().subscribe((result) => {
+      this.isMobile = result.matches;
+    });
+    this.sortAttributes = this.projectsService.getSortAttributes();
     this.projectsService.getProjects().subscribe((projects) => {
       this.projects = projects;
     });
@@ -79,14 +88,20 @@ export class ProjectsListComponent implements OnInit {
   }
 
   openFilterMenu() {
-    this.isFilterMenuOpen = this.isFilterMenuOpen ? false : true;
+    this.filterDrawer?.toggle();
   }
 
-  openDetails(project: Project) { // We need the ID if we don't want to pass the entire project
-    const detailRef = this.detailView.open(ProjectDetailComponent, {data: project});
-    detailRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`); // Just Testing
-    });
+  openDetails(projectId?: number) {
+    projectId && this.router.navigate([`projects/${projectId}`]);
+  }
+
+  toggleOrder() {
+    this.inAscendingOrder = !this.inAscendingOrder;
+  }
+
+  reset() {
+    this.projectFilterForm.reset();
+    this.inAscendingOrder = true;
   }
 
   onSubmit() {
@@ -98,6 +113,8 @@ export class ProjectsListComponent implements OnInit {
         type: this.type?.value,
         isDown: this.isDown?.value,
         dateFrom: this.dateFrom?.value,
+        sortBy: this.sortBy?.value,
+        inAscendingOrder: this.inAscendingOrder,
       })
       .subscribe((projects) => {
         this.projects = projects;

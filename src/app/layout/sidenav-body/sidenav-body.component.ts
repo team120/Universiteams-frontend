@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
   selector: "app-sidenav-body",
@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 export class SidenavBodyComponent {
   @Output() toggleSidebar = new EventEmitter();
 
-  onClickToggleSidebarButton(){
-    this.toggleSidebar.emit()
+  onClickToggleSidebarButton() {
+    this.toggleSidebar.emit();
   }
 }

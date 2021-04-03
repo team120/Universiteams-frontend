@@ -10,17 +10,12 @@ import { AppComponent } from "./app.component";
 import { UsersComponent } from "./users/users.component";
 import { LoginComponent } from "./login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
-import { FooterComponent } from "./layout/footer/footer.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
 import { ProjectsListComponent } from "./projects-list/projects-list.component";
 
-import {
-  MatDialogModule,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
@@ -36,8 +31,12 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatSortModule } from "@angular/material/sort";
 import { MatSelectModule } from "@angular/material/select";
 import { MatChipsModule } from "@angular/material/chips";
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { ProjectDetailComponent } from "./project-detail/project-detail.component";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { RouteReuseStrategy } from "@angular/router";
+import { RouteReuseService } from "./route-reuse.service";
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
     LoginComponent,
     DashboardComponent,
     AccountSettingsComponent,
-    FooterComponent,
     HeaderComponent,
     SidenavBodyComponent,
     ProjectsListComponent,
@@ -76,6 +74,8 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
     MatSelectModule,
     MatChipsModule,
     MatSlideToggleModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   providers: [
     {
@@ -83,6 +83,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
       useValue: {},
     },
     { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: RouteReuseStrategy, useClass: RouteReuseService },
   ],
   bootstrap: [AppComponent],
 })
