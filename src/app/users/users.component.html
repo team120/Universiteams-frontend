@@ -2,7 +2,10 @@
   <mat-form-field fxFlex="1 2 calc(15em + 20px)">
     <mat-label>Filtrar</mat-label>
     <input matInput (keyup)="filter($event)" placeholder="John Doe">
-    <mat-icon matSuffix (keyup)="filter($event)">search</mat-icon>
+    <mat-icon *ngIf="searchValid()" matSuffix>search</mat-icon>
+    <mat-icon *ngIf="!searchValid()" matSuffix type="button" class="submitIcon" (click)="filter($event)">
+      check
+    </mat-icon>
   </mat-form-field>
 </div>
 <div fxLayout="row" fxLayoutGap="0.5rem" id="filter-slide" class="little-side-marg">
@@ -12,7 +15,8 @@
 <mat-table [dataSource]="users" matSort class="mat-elevation-z8 little-side-marg">
   <ng-container matColumnDef="user">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
-    <mat-cell *matCellDef="let user"> {{user.lastName}}, {{user.name}} <br> {{ user.mail }}
+    <mat-cell *matCellDef="let user">
+      {{user.lastName}}, {{user.name}} <br> {{ user.mail }}
     </mat-cell>
   </ng-container>
   <ng-container matColumnDef="requestActions">

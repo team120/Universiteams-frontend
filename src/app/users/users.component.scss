@@ -1,13 +1,10 @@
-/* mat-form-field{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 97%;
-} */
-
 .little-side-marg {
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.submitIcon {
+    cursor: pointer;
 }
 
 .btnFilter {
@@ -15,11 +12,25 @@
     height: 100%;
 }
 
-#filter-slide { margin-bottom: 2vh; }
-.mat-header-cell { text-align: center; }
-.positionRequests { justify-content: center; }
-.users-container { padding: 0.5rem; }
-.mat-column-requestActions { justify-content: center; }
+#filter-slide {
+    margin-bottom: 2vh;
+}
+
+.mat-header-cell {
+    text-align: center;
+}
+
+.positionRequests {
+    justify-content: center;
+}
+
+.users-container {
+    padding: 0.5rem;
+}
+
+.mat-column-requestActions {
+    justify-content: center;
+}
 
 .mat-column-user {
     flex: 0 0 75%;
