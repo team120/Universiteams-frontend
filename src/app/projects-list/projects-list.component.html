@@ -3,7 +3,8 @@
     <mat-form-field class="search-bar">
       <mat-label>Buscar proyectos</mat-label>
       <input matInput placeholder="Por nombre de proyecto o por usuario" formControlName="generalSearch" />
-      <mat-icon matSuffix (click)="onSubmit()">search</mat-icon>
+      <mat-icon *ngIf="generalSearchValid()" matSuffix>search</mat-icon>
+      <mat-icon *ngIf="!generalSearchValid()" matSuffix type="button" class="submitIcon" (click)="onSubmit()">check</mat-icon>
     </mat-form-field>
     <button mat-button class="toggleFilterMenu" type="menu" (click)="openFilterMenu()">
       <mat-icon>filter_list</mat-icon>
