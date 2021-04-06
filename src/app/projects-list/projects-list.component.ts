@@ -89,10 +89,6 @@ export class ProjectsListComponent implements OnInit {
     });
   }
 
-  generalSearchValid() {
-    return this.generalSearch?.value == "";
-  }
-
   openFilterMenu() {
     this.filterDrawer?.toggle();
   }

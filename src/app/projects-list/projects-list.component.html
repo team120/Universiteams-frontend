@@ -1,12 +1,21 @@
-<form class="search-area" [formGroup]="projectFilterForm" class="little-side-marg" (ngSubmit)="onSubmit()">
+<form
+  class="search-area"
+  [formGroup]="projectFilterForm"
+  class="little-side-marg"
+  (ngSubmit)="onSubmit()"
+>
   <div class="search-header">
     <mat-form-field class="search-bar">
       <mat-label>Buscar proyectos</mat-label>
-      <input matInput placeholder="Por nombre de proyecto o por usuario" formControlName="generalSearch" />
-      <mat-icon *ngIf="generalSearchValid()" matSuffix>search</mat-icon>
-      <mat-icon *ngIf="!generalSearchValid()" matSuffix type="button" class="submitIcon" (click)="onSubmit()">
-        check
-      </mat-icon>
+      <input
+        matInput
+        type="text"
+        placeholder="Por nombre de proyecto o por usuario"
+        formControlName="generalSearch"
+      />
+      <button mat-button class="search-button" matSuffix aria-label="Submit">
+        <mat-icon>search</mat-icon>
+      </button>
     </mat-form-field>
     <button mat-button class="toggleFilterMenu" type="menu" (click)="openFilterMenu()">
       <mat-icon>filter_list</mat-icon>
@@ -19,12 +28,21 @@
           <mat-form-field class="sortByField">
             <mat-label>Ordenar por</mat-label>
             <mat-select formControlName="sortBy">
-              <mat-option *ngFor="let sortAttribute of sortAttributes" [value]="sortAttribute.attribute">
+              <mat-option
+                *ngFor="let sortAttribute of sortAttributes"
+                [value]="sortAttribute.attribute"
+              >
                 {{ sortAttribute.displayName }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-button (click)="toggleOrder()" aria-label="ordenar en forma" type="button" class="toggleOrder">
+          <button
+            mat-button
+            (click)="toggleOrder()"
+            aria-label="ordenar en forma"
+            type="button"
+            class="toggleOrder"
+          >
             <mat-icon class="inOrderField">{{
               inAscendingOrder ? "arrow_upward" : "arrow_downward"
             }}</mat-icon>
@@ -45,7 +63,10 @@
           <mat-label>Departamento</mat-label>
           <mat-select formControlName="department">
             <mat-option>Todas</mat-option>
-            <mat-option *ngFor="let department of selectedUniversity?.departments" [value]="department.id">
+            <mat-option
+              *ngFor="let department of selectedUniversity?.departments"
+              [value]="department.id"
+            >
               {{ department.name }}
             </mat-option>
           </mat-select>
@@ -70,13 +91,26 @@
           <mat-datepicker #picker startView="multi-year"></mat-datepicker>
         </mat-form-field>
 
-        <button mat-raised-button color="accent" class="applyFilters" [disabled]="!projectFilterForm.valid"
-          aria-label="check" type="submit">
+        <button
+          mat-raised-button
+          color="accent"
+          class="applyFilters"
+          [disabled]="!projectFilterForm.valid"
+          aria-label="check"
+          type="submit"
+        >
           <mat-icon>check</mat-icon>Aplicar
         </button>
 
-        <button mat-raised-button color="warn" class="resetFilters" [disabled]="!projectFilterForm.dirty"
-          aria-label="limpiar" type="reset" (click)="reset()">
+        <button
+          mat-raised-button
+          color="warn"
+          class="resetFilters"
+          [disabled]="!projectFilterForm.dirty"
+          aria-label="limpiar"
+          type="reset"
+          (click)="reset()"
+        >
           <mat-icon>delete</mat-icon>Limpiar
         </button>
       </div>
