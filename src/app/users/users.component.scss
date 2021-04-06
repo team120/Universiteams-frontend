@@ -7,9 +7,12 @@
     cursor: pointer;
 }
 
-.btnFilter {
-    align-self: center;
-    height: 100%;
+.btn-filter {
+    min-width: 2rem !important;
+    width: 2rem !important;
+    padding: 0rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
 }
 
 #filter-slide {
