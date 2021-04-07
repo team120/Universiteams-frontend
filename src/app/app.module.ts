@@ -1,14 +1,15 @@
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { RouteReuseService } from "./service/route-reuse/route-reuse.service"
-import { UsersComponent } from "./users/users.component";
-import { LoginComponent } from "./login/login.component";
+import { RouteReuseService } from "./general-service/route-reuse/route-reuse.service"
+import { UsersComponent } from "./admin/users/users.component";
+import { LoginComponent } from "./auth/login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeaderComponent } from "./layout/header/header.component";
 import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
-import { ProjectsListComponent } from "./projects-list/projects-list.component";
+import { ProjectsListComponent } from "./project/projects-list/projects-list.component";
+import { ProjectDetailComponent } from "./project/project-detail/project-detail.component";
 
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -35,7 +36,6 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatSelectModule } from "@angular/material/select";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { ProjectDetailComponent } from "./project-detail/project-detail.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 

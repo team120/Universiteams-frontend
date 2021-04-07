@@ -1,4 +1,4 @@
-import { DeviceDetectorService } from "./service/device-detector/device-detector.service";
+import { DeviceDetectorService } from "./general-service/device-detector/device-detector.service";
 
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";

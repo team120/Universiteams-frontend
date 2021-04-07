@@ -1,7 +1,7 @@
-import { Project } from "../model/project/project";
+import { Project } from "../../model/project/project";
 
-import { ProjectsService } from "../service/projects/projects.service";
-import { UniversitiesService } from "../service/universities/universities.service";
+import { ProjectsService } from "../projects-service/projects.service";
+import { UniversitiesService } from "../universities-service/universities.service";
 
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";

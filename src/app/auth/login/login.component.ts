@@ -1,7 +1,7 @@
-import { LoginInputDto } from "../model/auth/input/login.input.dto";
+import { LoginInputDto } from "../../model/auth/input/login.input.dto";
 
-import { AuthService } from "../service/auth/auth.service";
-import { LocalStorageService } from "../service/local-storage/local-storage.service";
+import { AuthService } from "../auth-service/auth.service";
+import { LocalStorageService } from "../../general-service/local-storage/local-storage.service";
 
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";

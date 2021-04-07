@@ -1,6 +1,6 @@
-import { LocalStorageService } from "../service/local-storage/local-storage.service";
-import { User } from "../model/user/user";
-import { UsersService } from "../service/users/users.service";
+import { LocalStorageService } from "../../general-service/local-storage/local-storage.service";
+import { User } from "../../model/user/user";
+import { UsersService } from "../users-service/users.service";
 
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";

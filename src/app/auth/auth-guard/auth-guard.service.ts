@@ -1,12 +1,11 @@
-import { AuthService } from "./auth.service";
-import { LoginComponent } from "../../login/login.component"
+import { AuthService } from "../auth-service/auth.service"
+import { LoginComponent } from "../login/login.component"
 
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  Router,
   RouterStateSnapshot,
   UrlTree,
 } from "@angular/router";

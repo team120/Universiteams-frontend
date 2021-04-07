@@ -1,7 +1,7 @@
 import { LoginInputDto } from "../../model/auth/input/login.input.dto";
 import { LoggedUserDto } from "../../model/auth/output/login.output.dto";
 
-import { LocalStorageService } from "../local-storage/local-storage.service";
+import { LocalStorageService } from "../../general-service/local-storage/local-storage.service";
 
 import { Observable } from "rxjs";
 import { JwtHelperService } from "@auth0/angular-jwt";
