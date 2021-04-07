@@ -15,7 +15,7 @@ export class RouteReuseService extends RouteReuseStrategy {
   store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle | null): void {
     console.log("Store", route.data?.reuse);
     if (route.data?.reuse === true) {
-      this.cachedRoutes.set(this.getFullUrl(route), handle);
+      this.cachedRoutes.set(this.getUrlToStore(route), handle);
     }
   }
 
@@ -42,5 +42,15 @@ export class RouteReuseService extends RouteReuseStrategy {
 
   private getFullUrl(route: ActivatedRouteSnapshot): string {
     return route.url.join("/");
+  }
+
+  private getUrlToStore(route: ActivatedRouteSnapshot): string {
+    console.log("urlToStore", route.routeConfig?.path);
+
+    if (route.routeConfig?.path) {
+      return route.routeConfig?.path;
+    }
+
+    return this.getFullUrl(route);
   }
 }

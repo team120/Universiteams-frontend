@@ -1,4 +1,4 @@
-import { AuthGuardService } from "./auth/auth-guard/auth-guard.service"
+import { AuthGuardService } from "./auth/auth-guard/auth-guard.service";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { LoginComponent } from "./auth/login/login.component";
