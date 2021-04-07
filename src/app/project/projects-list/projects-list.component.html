@@ -117,6 +117,15 @@
     </mat-drawer>
     <mat-drawer-content>
       <div [class]="isMobile ? 'projects-container-mobile' : 'projects-container-desktop'">
+        <div *ngIf="projects.length === 0 ">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>No se encontraron proyectos</mat-card-title>
+              <mat-card-subtitle>Por favor intente con otros terminos</mat-card-subtitle>
+              <div mat-card-avatar><mat-icon>sentiment_very_dissatisfied</mat-icon></div>
+            </mat-card-header>
+          </mat-card>
+        </div>
         <div *ngFor="let project of projects" class="project">
           <mat-card (click)="openDetails(project.id)">
             <!-- We need the ID if we don't want to pass the entire project -->
