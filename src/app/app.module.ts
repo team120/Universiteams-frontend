@@ -5,7 +5,6 @@ import { UsersComponent } from "./admin/users/users.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeaderComponent } from "./layout/header/header.component";
-import { ToolbarComponent } from './layout/toolbar/toolbar.component';
 import { SidenavBodyComponent } from "./layout/sidenav-body/sidenav-body.component";
 import { AccountSettingsComponent } from "./account-settings/account-settings.component";
 import { ProjectsListComponent } from "./project/projects-list/projects-list.component";
@@ -50,7 +49,6 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
     SidenavBodyComponent,
     ProjectsListComponent,
     ProjectDetailComponent,
-    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
