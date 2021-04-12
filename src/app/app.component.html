@@ -1,5 +1,5 @@
 <app-header *ngIf="showHeader" (toggleSidebar)="onToggleSidebar()"></app-header>
-<mat-sidenav-container>
+<mat-sidenav-container autosize="!isMobile">
   <mat-sidenav [mode]="isMobile ? 'over' : 'side'" *ngIf="showSidenav" [class.sidenav]="isMobile" [opened]="!isMobile">
     <app-sidenav-body></app-sidenav-body>
   </mat-sidenav>

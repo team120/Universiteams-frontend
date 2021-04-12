@@ -1,4 +1,4 @@
-import { DeviceDetectorService } from "./general-service/device-detector/device-detector.service";
+import { LayoutManagerService } from "./general-service/layout-manager/layout-manager.service";
 
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
@@ -18,25 +18,26 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    deviceDetectorService: DeviceDetectorService
+    private deviceDetectorService: LayoutManagerService
   ) {
     deviceDetectorService.isMobile().subscribe((result) => {
-      this.isMobile = result.matches;
+      this.isMobile = result;
     });
   }
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showHeader = this.activatedRoute.firstChild?.snapshot.data.showHeader !== false;
-        this.showSidenav = this.activatedRoute.firstChild?.snapshot.data.showNavbar !== false;
+        this.showHeader =
+          this.activatedRoute.firstChild?.snapshot.data.showHeader !== false;
+        this.showSidenav =
+          this.activatedRoute.firstChild?.snapshot.data.showNavbar !== false;
       }
     });
   }
 
   onToggleSidebar() {
-    if (this.sidenav !== undefined) {
-      this.sidenav.toggle();
-    }
+    this.isMobile && this.sidenav && this.sidenav.toggle();
+    !this.isMobile && this.deviceDetectorService.toggleExtendedMode();
   }
 }

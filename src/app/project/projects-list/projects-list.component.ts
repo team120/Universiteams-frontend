@@ -5,11 +5,17 @@ import { SortAttribute } from "../../model/general/general.model";
 
 import { ProjectsService } from "../projects-service/projects.service";
 import { UniversitiesService } from "../universities-service/universities.service";
-import { DeviceDetectorService } from "../../general-service/device-detector/device-detector.service";
+import { LayoutManagerService } from "../../general-service/layout-manager/layout-manager.service";
 import { ProjectDetailComponent } from "../project-detail/project-detail.component";
 
 import { Router } from "@angular/router";
-import { animate, state, style, transition, trigger } from "@angular/animations";
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from "@angular/animations";
 import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
@@ -62,7 +68,9 @@ export class ProjectsListComponent implements OnInit {
   }
 
   get selectedUniversity() {
-    return this.universities.find((university) => university.id === this.university?.value);
+    return this.universities.find(
+      (university) => university.id === this.university?.value
+    );
   }
 
   get projectTypes() {
@@ -73,12 +81,12 @@ export class ProjectsListComponent implements OnInit {
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
     private router: Router,
-    private deviceDetectorService: DeviceDetectorService
-  ) { }
+    private deviceDetectorService: LayoutManagerService
+  ) {}
 
   ngOnInit(): void {
     this.deviceDetectorService.isMobile().subscribe((result) => {
-      this.isMobile = result.matches;
+      this.isMobile = result;
     });
     this.sortAttributes = this.projectsService.getSortAttributes();
     this.projectsService.getProjects().subscribe((projects) => {
