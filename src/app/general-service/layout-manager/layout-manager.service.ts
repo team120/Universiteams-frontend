@@ -4,7 +4,7 @@ import {
   Breakpoints,
   BreakpointState,
 } from "@angular/cdk/layout";
-import { Injectable } from "@angular/core";
+import { ApplicationRef, ChangeDetectorRef, Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root",
@@ -13,12 +13,16 @@ export class LayoutManagerService {
   private isDesktopExtendedModeObservable = new BehaviorSubject<boolean>(true);
   private isMobileObserver = new BehaviorSubject<boolean>(false);
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(
+    breakpointObserver: BreakpointObserver,
+    applicationRef: ApplicationRef
+  ) {
     breakpointObserver.observe([Breakpoints.Handset]).subscribe((result) => {
       this.isMobileObserver.next(result.matches);
       if (result.matches) {
         this.isDesktopExtendedModeObservable.next(true);
       }
+      applicationRef.tick();
     });
   }
 
