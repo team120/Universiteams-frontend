@@ -14,11 +14,11 @@
         formControlName="generalSearch"
       />
       <button mat-button class="search-button" matSuffix aria-label="Submit" type="submit">
-        <mat-icon>search</mat-icon>
+        <mat-icon color="accent">search</mat-icon>
       </button>
     </mat-form-field>
     <button mat-button class="toggleFilterMenu" type="menu" (click)="openFilterMenu()">
-      <mat-icon>filter_list</mat-icon>
+      <mat-icon color="accent">filter_list</mat-icon>
     </button>
   </div>
   <mat-drawer-container>
@@ -43,7 +43,7 @@
             type="button"
             class="toggleOrder"
           >
-            <mat-icon class="inOrderField">{{
+            <mat-icon class="inOrderField" color="accent">{{
               inAscendingOrder ? "arrow_upward" : "arrow_downward"
             }}</mat-icon>
           </button>

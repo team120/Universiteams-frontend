@@ -5,9 +5,11 @@
     aria-label="Toggle navigation sidebar button"
     (click)="onClickToggleSidebarButton()"
   >
-    <mat-icon>menu</mat-icon>
+    <mat-icon color="accent">menu</mat-icon>
   </button>
-  <mat-icon color="primary">polymer</mat-icon>
+  <button mat-icon-button>
+    <mat-icon color="primary">polymer</mat-icon>
+  </button>
   <span class="header-spacer"></span>
   <button
     id="settingsBtn"
@@ -16,6 +18,6 @@
     routerLink="/account-settings"
     routerLinkActive="active"
   >
-    <mat-icon>settings</mat-icon>
+    <mat-icon color="accent">settings</mat-icon>
   </button>
 </mat-toolbar>
