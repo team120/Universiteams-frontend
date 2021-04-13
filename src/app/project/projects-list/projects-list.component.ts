@@ -8,7 +8,7 @@ import { UniversitiesService } from "../universities-service/universities.servic
 import { LayoutManagerService } from "../../general-service/layout-manager/layout-manager.service";
 import { ProjectDetailComponent } from "../project-detail/project-detail.component";
 
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   animate,
   state,
@@ -20,6 +20,7 @@ import { Component, OnInit, Inject, ViewChild } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatDialog, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { MatDrawer } from "@angular/material/sidenav";
+import { mergeMap } from "rxjs/operators";
 
 @Component({
   selector: "app-projects-list",
@@ -27,7 +28,6 @@ import { MatDrawer } from "@angular/material/sidenav";
   styleUrls: ["./projects-list.component.scss"],
 })
 export class ProjectsListComponent implements OnInit {
-  projects: Project[] = [];
   universities: University[] = [];
   isMobile = false;
   sortAttributes: SortAttribute[] = [];
@@ -77,11 +77,27 @@ export class ProjectsListComponent implements OnInit {
     return projectTypesList;
   }
 
+  projects = this.route.queryParams.pipe(
+    mergeMap((params) =>
+      this.projectsService.getProjects({
+        generalSearchTerm: params.generalSearch,
+        universityId: params.university,
+        departmentId: params.department,
+        type: params.type,
+        isDown: params.isDown,
+        dateFrom: params.dateFrom,
+        sortBy: params.sortBy,
+        inAscendingOrder: params.inAscendingOrder,
+      })
+    )
+  );
+
   constructor(
     private projectsService: ProjectsService,
     private universitiesService: UniversitiesService,
     private router: Router,
-    private deviceDetectorService: LayoutManagerService
+    private deviceDetectorService: LayoutManagerService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -89,9 +105,6 @@ export class ProjectsListComponent implements OnInit {
       this.isMobile = result;
     });
     this.sortAttributes = this.projectsService.getSortAttributes();
-    this.projectsService.getProjects().subscribe((projects) => {
-      this.projects = projects;
-    });
     this.universitiesService.getUniversities().subscribe((universities) => {
       this.universities = universities;
     });
@@ -115,19 +128,28 @@ export class ProjectsListComponent implements OnInit {
   }
 
   onSubmit() {
-    this.projectsService
-      .getProjects({
-        generalSearchTerm: this.generalSearch?.value,
-        universityId: this.university?.value,
-        departmentId: this.department?.value,
-        type: this.type?.value,
-        isDown: this.isDown?.value,
-        dateFrom: this.dateFrom?.value,
-        sortBy: this.sortBy?.value,
-        inAscendingOrder: this.inAscendingOrder,
-      })
-      .subscribe((projects) => {
-        this.projects = projects;
-      });
+    this.router.navigate(["/projects"], {
+      queryParams: {
+        generalSearch:
+          this.generalSearch?.value === ""
+            ? undefined
+            : this.generalSearch?.value,
+        university:
+          this.university?.value === "" ? undefined : this.university?.value,
+        department:
+          this.department?.value === "" ? undefined : this.department?.value,
+        type: this.type?.value === "" ? undefined : this.type?.value,
+        isDown: this.isDown?.value === "" ? undefined : this.isDown?.value,
+        dateFrom:
+          this.dateFrom?.value === "" ? undefined : this.dateFrom?.value,
+        sortBy: this.sortBy?.value === "" ? undefined : this.sortBy?.value,
+        inAscendingOrder:
+          this.sortBy?.value !== null && this.sortBy?.value !== ""
+            ? this.inAscendingOrder
+            : undefined,
+      },
+      queryParamsHandling: "merge",
+    });
+    console.log("sortBy", this.sortBy?.value);
   }
 }

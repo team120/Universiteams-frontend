@@ -117,7 +117,7 @@
     </mat-drawer>
     <mat-drawer-content>
       <div [class]="isMobile ? 'projects-container-mobile' : 'projects-container-desktop'">
-        <div *ngIf="projects.length === 0 ">
+        <div *ngIf="(projects | async)?.length === 0 ">
           <mat-card>
             <mat-card-header>
               <mat-card-title>No se encontraron proyectos</mat-card-title>
@@ -126,7 +126,7 @@
             </mat-card-header>
           </mat-card>
         </div>
-        <div *ngFor="let project of projects" class="project">
+        <div *ngFor="let project of projects | async" class="project">
           <mat-card (click)="openDetails(project.id)">
             <!-- We need the ID if we don't want to pass the entire project -->
             <mat-card-header matLine>
