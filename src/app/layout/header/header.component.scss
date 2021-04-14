@@ -14,4 +14,9 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  display: flex;
+}
+
+.search-bar {
+  flex-grow: 3;
 }
