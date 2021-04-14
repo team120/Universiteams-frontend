@@ -1,16 +1,9 @@
 <form class="search-header" [formGroup]="searchBarForm" (ngSubmit)="onSubmit()">
-  <mat-form-field
-    class="search-bar"
-    [appearance]="(isMobile | async)? 'standard' : 'outline'"
-  >
+  <mat-form-field class="search-bar" appearance="standard">
     <input
       matInput
       type="text"
-      [placeholder]="
-        (isMobile | async)
-          ? 'Nombre o Usuario'
-          : 'Buscar por nombre o por usuario'
-      "
+      [placeholder]="(isMobile | async) ? 'Nombre o Usuario': 'Buscar por nombre o por usuario'"
       formControlName="generalSearch"
     />
     <button
