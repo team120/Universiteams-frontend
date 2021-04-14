@@ -19,6 +19,7 @@
     aria-label="Open user's settings"
     routerLink="/account-settings"
     routerLinkActive="active"
+    *ngIf="!(isMobile | async)"
   >
     <mat-icon color="accent">settings</mat-icon>
   </button>

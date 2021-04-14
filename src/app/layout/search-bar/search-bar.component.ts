@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
+import { LayoutManagerService } from "src/app/general-service/layout-manager/layout-manager.service";
 
 @Component({
   selector: "app-search-bar",
@@ -12,7 +13,12 @@ export class SearchBarComponent {
     generalSearch: new FormControl(""),
   });
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private layoutManager: LayoutManagerService
+  ) {}
+
+  isMobile = this.layoutManager.isMobile();
 
   get generalSearch() {
     return this.searchBarForm.get("generalSearch");
