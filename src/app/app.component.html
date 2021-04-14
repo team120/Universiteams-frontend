@@ -1,10 +1,17 @@
 <app-header *ngIf="showHeader" (toggleSidebar)="onToggleSidebar()"></app-header>
+
 <mat-sidenav-container autosize="!isMobile">
-  <mat-sidenav [mode]="isMobile ? 'over' : 'side'" *ngIf="showSidenav" [class.sidenav]="isMobile" [opened]="!isMobile">
+  <mat-sidenav
+    [mode]="(isMobile | async) ? 'over' : 'side'"
+    *ngIf="showSidenav"
+    [class.sidenav]="isMobile | async"
+    [opened]="!(isMobile | async)"
+  >
     <app-sidenav-body></app-sidenav-body>
   </mat-sidenav>
   <mat-sidenav-content class="filled">
     <div id="content" fxLayout="column">
+      <app-toolbar *ngIf="isMobile | async" class="toolbar"></app-toolbar>
       <router-outlet class="outlet"></router-outlet>
     </div>
   </mat-sidenav-content>

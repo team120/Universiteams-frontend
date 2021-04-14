@@ -13,17 +13,14 @@ export class AppComponent implements OnInit {
   @ViewChild(MatSidenav) sidenav: MatSidenav | undefined;
   showHeader = false;
   showSidenav = false;
-  isMobile = false;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private deviceDetectorService: LayoutManagerService
-  ) {
-    deviceDetectorService.isMobile().subscribe((result) => {
-      this.isMobile = result;
-    });
-  }
+    private layoutManager: LayoutManagerService
+  ) {}
+
+  isMobile = this.layoutManager.isMobile();
 
   ngOnInit(): void {
     this.router.events.subscribe((event) => {
@@ -38,6 +35,6 @@ export class AppComponent implements OnInit {
 
   onToggleSidebar() {
     this.isMobile && this.sidenav && this.sidenav.toggle();
-    !this.isMobile && this.deviceDetectorService.toggleExtendedMode();
+    !this.isMobile && this.layoutManager.toggleExtendedMode();
   }
 }
