@@ -37,6 +37,7 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
+import { SearchBarComponent } from './layout/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MatMomentDateModule } from "@angular/material-moment-adapter";
     SidenavBodyComponent,
     ProjectsListComponent,
     ProjectDetailComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,

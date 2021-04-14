@@ -150,6 +150,5 @@ export class ProjectsListComponent implements OnInit {
       },
       queryParamsHandling: "merge",
     });
-    console.log("sortBy", this.sortBy?.value);
   }
 }
