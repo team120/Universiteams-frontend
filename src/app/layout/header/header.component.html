@@ -1,10 +1,6 @@
 <mat-toolbar class="mat-upm-shade-3 header-toolbar">
-  <button
-    id="toggleNavBtn"
-    mat-icon-button
-    aria-label="Toggle navigation sidebar button"
-    (click)="onClickToggleSidebarButton()"
-  >
+  <button id="toggleNavBtn" mat-icon-button aria-label="Toggle navigation sidebar button"
+    (click)="onClickToggleSidebarButton()">
     <mat-icon color="accent">menu</mat-icon>
   </button>
   <button mat-icon-button>
@@ -13,14 +9,8 @@
   <span class="header-spacer"></span>
   <app-search-bar class="search-bar"></app-search-bar>
   <span class="header-spacer"></span>
-  <button
-    id="settingsBtn"
-    mat-icon-button
-    aria-label="Open user's settings"
-    routerLink="/account-settings"
-    routerLinkActive="active"
-    *ngIf="!(isMobile | async)"
-  >
+  <button id="settingsBtn" mat-icon-button aria-label="Open user's settings" routerLink="/account-settings"
+    routerLinkActive="active" *ngIf="!(isMobile | async)">
     <mat-icon>settings</mat-icon>
   </button>
 </mat-toolbar>

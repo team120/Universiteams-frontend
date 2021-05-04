@@ -1,18 +1,7 @@
 <form class="search-header" [formGroup]="searchBarForm" (ngSubmit)="onSubmit()">
   <mat-form-field class="search-bar" appearance="standard">
-    <input
-      matInput
-      type="text"
-      [placeholder]="(isMobile | async) ? 'Nombre o Usuario': 'Buscar por nombre o por usuario'"
-      formControlName="generalSearch"
-    />
-    <button
-      mat-button
-      class="search-button"
-      matSuffix
-      aria-label="Submit"
-      type="submit"
-    >
+    <input matInput type="text" placeholder="Buscar en Universiteams..." formControlName="generalSearch" />
+    <button mat-button class="search-button" matSuffix aria-label="Submit" type="submit">
       <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
