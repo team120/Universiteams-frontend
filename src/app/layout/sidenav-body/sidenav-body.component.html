@@ -1,4 +1,4 @@
-<mat-nav-list class="mat-upm-shade-2">
+<mat-nav-list class="mat-upm-shade-2 nav-list">
   <mat-list-item routerLink="/profile" routerLinkActive="active" class="mat-upm-shade-3">
     <div class="profile-image">
       <!-- Insert profile image instead of mat-icon -->
@@ -16,6 +16,16 @@
     <mat-icon matListIcon>home</mat-icon>
     <!-- Or a little UPM Logo -->
     <a>UPM Feed</a>
+  </mat-list-item>
+
+  <mat-list-item routerLink="/projects" routerLinkActive="active">
+    <mat-icon matListIcon>search</mat-icon>
+    <a>Buscador de Proyectos</a>
+  </mat-list-item>
+
+  <mat-list-item routerLink="/users" routerLinkActive="active">
+    <mat-icon matListIcon>face</mat-icon>
+    <a>Mis solicitudes</a>
   </mat-list-item>
 
   <mat-divider></mat-divider>
@@ -38,18 +48,6 @@
   <mat-list-item routerLink="/inform-error" routerLinkActive="active">
     <mat-icon matListIcon>error</mat-icon>
     <a><b>Reportar un Error</b></a>
-  </mat-list-item>
-
-  <mat-divider></mat-divider>
-
-  <mat-list-item routerLink="/users" routerLinkActive="active">
-    <mat-icon matListIcon>face</mat-icon>
-    <a>Mis solicitudes</a>
-  </mat-list-item>
-
-  <mat-list-item routerLink="/projects" routerLinkActive="active">
-    <mat-icon matListIcon>search</mat-icon>
-    <a>Buscador de Proyectos</a>
   </mat-list-item>
 
   <mat-divider></mat-divider>

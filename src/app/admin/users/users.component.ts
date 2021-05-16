@@ -1,10 +1,11 @@
+import { LocalStorageService } from "../../general-service/local-storage/local-storage.service";
+import { User } from "../../model/user/user";
+import { UsersService } from "../users-service/users.service";
+
 import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
-import { LocalStorageService } from "../local-storage.service";
-import { User } from "../model/user/user";
-import { UsersService } from "../users.service";
 
 @Component({
   selector: "app-users",
@@ -22,7 +23,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   constructor(
     private usersService: UsersService,
     private storageService: LocalStorageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const token = this.storageService.getTokenInStorage();
@@ -40,12 +41,16 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.users.sort = this.sort
   }
 
-  filter(event: Event){
+  filter(event: Event) {
     const inputValue = (event.target as HTMLInputElement).value
     this.users.filter = inputValue.trim().toLowerCase()
   }
 
-  toggleFilterRequests(){
+  searchValid() {
+    return this.users.filter == "";
+  }
+
+  toggleFilterRequests() {
     if (!this.filterRequestsAlreadyApplied) {
       this.users.filter = "true"
       this.filterRequestsAlreadyApplied = true

@@ -1,12 +1,13 @@
+import { AuthGuardService } from "./auth/auth-guard/auth-guard.service";
+import { AccountSettingsComponent } from "./account-settings/account-settings.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { LoginComponent } from "./auth/login/login.component";
+import { ProjectDetailComponent } from "./project/project-detail/project-detail.component";
+import { ProjectsListComponent } from "./project/projects-list/projects-list.component";
+import { UsersComponent } from "./admin/users/users.component";
+
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AccountSettingsComponent } from "./account-settings/account-settings.component";
-import { AuthGuardService } from "./auth-guard.service";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { LoginComponent } from "./login/login.component";
-import { ProjectDetailComponent } from "./project-detail/project-detail.component";
-import { ProjectsListComponent } from "./projects-list/projects-list.component";
-import { UsersComponent } from "./users/users.component";
 
 const routes: Routes = [
   {

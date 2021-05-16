@@ -1,8 +1,9 @@
+import { SortAttribute } from "../../model/general/general.model";
+import { Project } from "../../model/project/project";
+
+import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { SortAttribute } from "./model/general/general.model";
-import { Project } from "./model/project/project";
 
 @Injectable({
   providedIn: "root",
