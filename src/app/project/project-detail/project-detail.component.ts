@@ -1,8 +1,10 @@
+import { Project } from "../../model/project/project";
+
+import { ProjectsService } from "../projects-service/projects.service";
+import { UniversitiesService } from "../universities-service/universities.service";
+
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Project } from "../model/project/project";
-import { ProjectsService } from "../projects.service";
-import { UniversitiesService } from "../universities.service";
 
 @Component({
   selector: "app-project-detail",

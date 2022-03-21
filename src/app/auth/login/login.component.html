@@ -10,20 +10,16 @@
 
   <mat-tab-group class="lit-pad-b" animationDuration="0ms" mat-stretch-tabs>
     <mat-tab label="Login">
-      <form
-        [formGroup]="loginForm"
-        fxLayout="column"
-        fxLayoutAlign="stretch"
-        (ngSubmit)="onLoginSubmit()">
-        
+      <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="stretch" (ngSubmit)="onLoginSubmit()">
+
         <mat-form-field class="lit-pad-t">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" formControlName="mail"/>
+          <input matInput placeholder="Email" formControlName="mail" />
           <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
+          <input matInput type="password" placeholder="Contraseña" formControlName="password" />
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
 
@@ -34,21 +30,17 @@
     </mat-tab>
 
     <mat-tab label="Registrarse">
-      <form
-        [formGroup]="registerForm"
-        fxLayout="column"
-        fxLayoutAlign="stretch"
-        (ngSubmit)="onRegisterSubmit()">
-        
+      <form [formGroup]="registerForm" fxLayout="column" fxLayoutAlign="stretch" (ngSubmit)="onRegisterSubmit()">
+
         <mat-form-field class="lit-pad-t">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" formControlName="mail"/>
+          <input matInput placeholder="Email" formControlName="mail" />
           <mat-icon matSuffix>mail</mat-icon>
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Contraseña</mat-label>
-          <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
+          <input matInput type="password" placeholder="Contraseña" formControlName="password" />
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
 
@@ -58,17 +50,17 @@
       </form>
     </mat-tab>
   </mat-tab-group>
-  
+
   <mat-divider></mat-divider>
 
   <div fxLayout="column" fxLayoutAlign="stretch">
-    <br/>
+    <br />
     <button mat-raised-button class="google-style btn-pd">
       <mat-icon svgIcon="logo" class="btn-icon"></mat-icon>
       Conectarse con Google
     </button>
 
-    <br/>
+    <br />
     <button mat-raised-button color="primary" class="btn-pd">
       <mat-icon class="btn-icon">nature_people</mat-icon>
       Solo vengo de visita

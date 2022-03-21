@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component } from "@angular/core";
+import { LayoutManagerService } from "src/app/general-service/layout-manager/layout-manager.service";
 
 @Component({
   selector: "app-sidenav-body",
@@ -6,9 +7,11 @@ import { Component, EventEmitter, Output } from "@angular/core";
   styleUrls: ["./sidenav-body.component.scss"],
 })
 export class SidenavBodyComponent {
-  @Output() toggleSidebar = new EventEmitter();
+  isDesktopExtended = true;
 
-  onClickToggleSidebarButton() {
-    this.toggleSidebar.emit();
+  constructor(deviceDetector: LayoutManagerService) {
+    deviceDetector.isDesktopExtendedMode().subscribe((result) => {
+      this.isDesktopExtended = result;
+    });
   }
 }

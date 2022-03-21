@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutGap="0.5rem" id="filter-input" class="little-side-marg">
+  <mat-form-field fxFlex="1 2 calc(15em + 20px)">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="filter($event)" placeholder="John Doe" />
+    <button mat-button matSuffix aria-label="Filter" (click)="filter($event)" type="button" class="btn-filter">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+<div fxLayout="row" fxLayoutGap="0.5rem" id="filter-slide" class="little-side-marg">
+  <mat-slide-toggle (click)="toggleFilterRequests()"
+    >Solo Solicitud Pendiente</mat-slide-toggle
+  >
+</div>
+
+<mat-table [dataSource]="users" matSort class="mat-elevation-z8 little-side-marg">
+  <ng-container matColumnDef="user">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Usuario</mat-header-cell>
+    <mat-cell *matCellDef="let user">
+      {{ user.lastName }}, {{ user.name }} <br />
+      {{ user.mail }}
+    </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="requestActions">
+    <mat-header-cell *matHeaderCellDef>Solicita Cargo</mat-header-cell>
+    <mat-cell *matCellDef="let user" class="positionRequests">
+      <div *ngIf="user.requestPosition">
+        <button mat-button>
+          <mat-icon aria-hidden="false" aria-label="Revise">visibility</mat-icon>
+        </button>
+        <button mat-button>
+          <mat-icon aria-hidden="false" aria-label="Decline">delete</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="!user.requestPosition">NO</div>
+    </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+</mat-table>
+
+<mat-paginator
+  [pageSizeOptions]="[10, 15, 20]"
+  showFirstLastButtons
+  class="mat-elevation-z8 little-side-marg"
+>
+</mat-paginator>

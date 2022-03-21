@@ -17,12 +17,8 @@
   margin-right: 1rem;
 }
 
-.search-header {
-  display: flex;
-}
-
-.search-bar {
-  flex-grow: 1;
+.submitIcon {
+  cursor: pointer;
 }
 
 .toggleFilterMenu,
@@ -38,6 +34,10 @@
   padding: 0rem;
   margin-left: 0.75rem;
   margin-right: 0rem;
+}
+
+.toggleFilterMenu{
+  margin-top: 7px;
 }
 
 .applyFilters,

@@ -1,55 +1,50 @@
-<mat-nav-list class="mat-upm-shade-2">
-  <mat-list-item routerLink="/profile" routerLinkActive="active" class="mat-upm-shade-3">
-    <div class="profile-image">
-      <!-- Insert profile image instead of mat-icon -->
-      <mat-icon matListIcon>account_circle</mat-icon>
-    </div>
-    <div class="profile-data">
-      <a class="username">Adriandrés Mecaduy</a>
-      <a class="mail">ttads120@gmail.com</a>
-    </div>
-  </mat-list-item>
+<mat-nav-list class="mat-upm-shade-2 nav-list">
+  <div class="profile">
+    <mat-list-item>
+      <div class="profile-image">
+        <!-- Insert profile image instead of mat-icon -->
+        <mat-icon matListIcon>account_circle</mat-icon>
+      </div>
+      <div class="profile-data" *ngIf="isDesktopExtended">
+        <a class="username">Adriandrés Mecaduy</a>
+        <a class="mail">ttads120@gmail.com</a>
+      </div>
+    </mat-list-item>
+  </div>
 
   <mat-divider></mat-divider>
 
   <mat-list-item routerLink="/dashboard" routerLinkActive="active">
     <mat-icon matListIcon>home</mat-icon>
     <!-- Or a little UPM Logo -->
-    <a>UPM Feed</a>
+    <a *ngIf="isDesktopExtended">UPM Feed</a>
+  </mat-list-item>
+
+  <mat-list-item routerLink="/users" routerLinkActive="active">
+    <mat-icon matListIcon>face</mat-icon>
+    <a *ngIf="isDesktopExtended">Mis solicitudes</a>
   </mat-list-item>
 
   <mat-divider></mat-divider>
 
   <mat-list-item routerLink="/about" routerLinkActive="active">
     <mat-icon matListIcon>domain</mat-icon>
-    <a>Sobre Nosotros</a>
+    <a *ngIf="isDesktopExtended">Sobre Nosotros</a>
   </mat-list-item>
 
   <mat-list-item routerLink="/conditions" routerLinkActive="active">
     <mat-icon matListIcon>feed</mat-icon>
-    <a>Términos y Condiciones</a>
+    <a *ngIf="isDesktopExtended">Términos y Condiciones</a>
   </mat-list-item>
 
   <mat-list-item routerLink="/share" routerLinkActive="active">
     <mat-icon matListIcon>share</mat-icon>
-    <a>Compartir Aplicación</a>
+    <a *ngIf="isDesktopExtended">Compartir Aplicación</a>
   </mat-list-item>
 
   <mat-list-item routerLink="/inform-error" routerLinkActive="active">
     <mat-icon matListIcon>error</mat-icon>
-    <a><b>Reportar un Error</b></a>
-  </mat-list-item>
-
-  <mat-divider></mat-divider>
-
-  <mat-list-item routerLink="/users" routerLinkActive="active">
-    <mat-icon matListIcon>face</mat-icon>
-    <a>Mis solicitudes</a>
-  </mat-list-item>
-
-  <mat-list-item routerLink="/projects" routerLinkActive="active">
-    <mat-icon matListIcon>search</mat-icon>
-    <a>Buscador de Proyectos</a>
+    <a *ngIf="isDesktopExtended"><b>Reportar un Error</b></a>
   </mat-list-item>
 
   <mat-divider></mat-divider>
